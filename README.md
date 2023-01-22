@@ -1,11 +1,6 @@
-# Nuxt 3 + PrimeVue + i18n + Pinia Boilerplate
+# Nuxt 3 Minimal Starter
 
-## Documentation
-
-- Nuxt 3: [https://nuxt.com/docs/getting-started/introduction](https://nuxt.com/docs/getting-started/introduction)
-- PrimeVue: [https://www.primefaces.org/primevue/setup](https://www.primefaces.org/primevue/setup)
-- Pinia: [https://pinia.vuejs.org/introduction.html](https://pinia.vuejs.org/introduction.html)
-- i18n: [https://vue-i18n.intlify.dev/guide/introduction.html](https://vue-i18n.intlify.dev/guide/introduction.html)
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
 

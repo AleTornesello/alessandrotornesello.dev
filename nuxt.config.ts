@@ -7,7 +7,12 @@ export default defineNuxtConfig({
     },
   },
   build: {
-    transpile: ["primevue", "i18n", "pinia-plugin-store.client"],
+    transpile: [
+      "primevue",
+      "i18n",
+      "pinia-plugin-store.client",
+      "vue3-particles",
+    ],
   },
   css: [
     "primevue/resources/primevue.css",

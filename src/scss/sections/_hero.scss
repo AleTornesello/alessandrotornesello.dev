@@ -1,0 +1,63 @@
+@use "../bulma/utilities/mixins";
+
+.hero {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  // background-image: radial-gradient(
+  //   circle at 1px 1px,
+  //   #25292e 1px,
+  //   transparent 0
+  // );
+  // background-size: 24px 24px;
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    &__grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(
+        circle at 1px 1px,
+        #25292e 1px,
+        transparent 0
+      );
+      background-size: 24px 24px;
+    }
+
+    &__gradient {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        var(--bulma-body-background-color) 100%
+      );
+    }
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__scroll {
+    font-size: 2rem;
+  }
+}
+
+@include mixins.touch {
+  .hero {
+    &__body {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

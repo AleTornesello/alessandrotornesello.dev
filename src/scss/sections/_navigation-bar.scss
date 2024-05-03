@@ -6,11 +6,7 @@
 }
 
 .navigation-bar {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(49, 54, 63, 0.75);
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 100px !important;
   margin: 0 auto;
   width: fit-content;
   padding: 12px 24px;

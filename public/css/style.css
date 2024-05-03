@@ -23330,6 +23330,10 @@ has-background-danger.is-hoverable:active {
   background: var(--bulma-text-strong);
 }
 
+pre {
+  background-color: unset;
+}
+
 .navigation-bar-container {
   position: fixed;
   top: 24px;
@@ -23338,11 +23342,7 @@ has-background-danger.is-hoverable:active {
 }
 
 .navigation-bar {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(49, 54, 63, 0.75);
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 100px !important;
   margin: 0 auto;
   width: fit-content;
   padding: 12px 24px;
@@ -23375,38 +23375,25 @@ has-background-danger.is-hoverable:active {
   max-height: 100vh;
 }
 
-.hero__background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-
-.hero__background__grid {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle at 1px 1px, #25292e 1px, transparent 0);
-  background-size: 24px 24px;
-  z-index: 1;
-}
-
-.hero__background__gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--bulma-body-background-color) 100%);
-  z-index: 2;
-}
-
 .hero__body {
-  position: absolute;
   width: 100%;
   height: 100%;
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.hero__body:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--bulma-body-background-color) 22px, transparent 1%) 50%, linear-gradient(var(--bulma-body-background-color) 22px, transparent 1%) 50%, var(--bulma-border);
+  background-position-x: center;
+  background-position-y: center;
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(0deg, transparent 5%, #000);
+  mask-image: linear-gradient(0deg, transparent 5%, #000);
 }
 
 .hero__body .container {
@@ -23418,12 +23405,16 @@ has-background-danger.is-hoverable:active {
 .hero__scroll {
   font-size: 2rem;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   width: 100%;
   z-index: 30;
 }
 
-.hero__scroll i {
+.hero__scroll a {
+  color: var(--bulma-text);
+}
+
+.hero__scroll a i {
   margin: 0 auto;
 }
 
@@ -23435,6 +23426,64 @@ has-background-danger.is-hoverable:active {
     justify-content: center;
   }
 }
+.window__top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 12px 12px 0 0;
+  background-color: rgb(49, 54, 63);
+}
+
+.window__top-bar__button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.window__top-bar__button:nth-child(1) {
+  background-color: #ff0000;
+}
+
+.window__top-bar__button:nth-child(2) {
+  background-color: #ffff00;
+}
+
+.window__top-bar__button:nth-child(3) {
+  background-color: #00ff00;
+}
+
+.window__body {
+  border-radius: 0 0 12px 12px;
+  max-width: 100%;
+}
+
+.window__body__command .device-name {
+  color: #00ff00;
+}
+
+.window__body__command .path {
+  color: #8888ff;
+}
+
+.window__body pre {
+  max-width: 100%;
+  white-space: break-spaces;
+}
+
+.glass {
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  background-color: rgba(49, 54, 63, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;

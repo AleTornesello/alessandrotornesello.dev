@@ -1,6 +1,11 @@
 @import "bulma";
 @import "theme";
 @import "sections";
+@import "utils";
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;

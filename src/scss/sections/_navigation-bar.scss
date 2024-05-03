@@ -1,0 +1,38 @@
+.navigation-bar-container {
+  position: fixed;
+  top: 24px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navigation-bar {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(49, 54, 63, 0.75);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin: 0 auto;
+  width: fit-content;
+  padding: 12px 24px;
+  box-shadow: 0 10px 15px #0003;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    list-style: none;
+
+    &:hover &__item:not(:hover) {
+      opacity: 0.4;
+    }
+
+    &__item {
+      cursor: pointer;
+
+      a {
+        color: var(--bulma-text);
+      }
+    }
+  }
+}

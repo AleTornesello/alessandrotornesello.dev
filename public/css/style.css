@@ -23330,40 +23330,105 @@ has-background-danger.is-hoverable:active {
   background: var(--bulma-text-strong);
 }
 
+.navigation-bar-container {
+  position: fixed;
+  top: 24px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navigation-bar {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(49, 54, 63, 0.75);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin: 0 auto;
+  width: fit-content;
+  padding: 12px 24px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navigation-bar__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  list-style: none;
+}
+
+.navigation-bar__list:hover .navigation-bar__list__item:not(:hover) {
+  opacity: 0.4;
+}
+
+.navigation-bar__list__item {
+  cursor: pointer;
+}
+
+.navigation-bar__list__item a {
+  color: var(--bulma-text);
+}
+
 .hero {
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
 }
+
 .hero__background {
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 10;
 }
+
 .hero__background__grid {
   position: absolute;
   width: 100%;
   height: 100%;
   background-image: radial-gradient(circle at 1px 1px, #25292e 1px, transparent 0);
   background-size: 24px 24px;
+  z-index: 1;
 }
+
 .hero__background__gradient {
   position: absolute;
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--bulma-body-background-color) 100%);
+  z-index: 2;
 }
+
 .hero__body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
+.hero__body .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .hero__scroll {
   font-size: 2rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 30;
+}
+
+.hero__scroll i {
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1023px) {
-  .hero__body {
+  .hero__body .container {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;

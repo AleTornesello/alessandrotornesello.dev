@@ -23457,6 +23457,8 @@ pre {
 .window__body {
   border-radius: 0 0 12px 12px;
   max-width: 100%;
+  font-family: var(--bulma-code-family);
+  padding: 18px;
 }
 
 .window__body__command .device-name {
@@ -23467,9 +23469,12 @@ pre {
   color: #8888ff;
 }
 
-.window__body pre {
-  max-width: 100%;
-  white-space: break-spaces;
+.window__body p {
+  margin-bottom: 8px;
+}
+
+.window__body p:last-child {
+  margin-bottom: 0;
 }
 
 .glass {

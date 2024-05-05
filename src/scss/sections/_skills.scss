@@ -1,0 +1,28 @@
+@use "../bulma/utilities/mixins";
+
+#skills {
+  .skills-list {
+    &__item {
+      .progress-bar {
+        height: 1rem;
+        background-image: radial-gradient(#ffffff 1px, transparent 0);
+        background-size: 4px 4px;
+        background-position-y: calc(1rem - 4px);
+        background-repeat: repeat-x;
+        width: 100%;
+
+        &__filler {
+          height: 100%;
+          background-image: radial-gradient(#ffffff 1px, transparent 0);
+          background-size: 4px 4px;
+
+          @for $i from 1 through 20 {
+            &.fill-#{$i * 5} {
+              width: #{$i * 5} + "%";
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -23565,6 +23565,101 @@ pre {
     gap: 0;
   }
 }
+#skills .skills-list__item .progress-bar {
+  height: 1rem;
+  background-image: radial-gradient(#ffffff 1px, transparent 0);
+  background-size: 4px 4px;
+  background-position-y: calc(1rem - 4px);
+  background-repeat: repeat-x;
+  width: 100%;
+}
+
+#skills .skills-list__item .progress-bar__filler {
+  height: 100%;
+  background-image: radial-gradient(#ffffff 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-5 {
+  width: 5%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-10 {
+  width: 10%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-15 {
+  width: 15%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-20 {
+  width: 20%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-25 {
+  width: 25%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-30 {
+  width: 30%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-35 {
+  width: 35%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-40 {
+  width: 40%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-45 {
+  width: 45%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-50 {
+  width: 50%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-55 {
+  width: 55%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-60 {
+  width: 60%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-65 {
+  width: 65%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-70 {
+  width: 70%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-75 {
+  width: 75%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-80 {
+  width: 80%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-85 {
+  width: 85%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-90 {
+  width: 90%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-95 {
+  width: 95%;
+}
+
+#skills .skills-list__item .progress-bar__filler.fill-100 {
+  width: 100%;
+}
+
 .section-title {
   text-align: center;
 }

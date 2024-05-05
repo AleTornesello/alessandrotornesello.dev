@@ -23492,6 +23492,7 @@ pre {
 #jobs .jobs-list__item .period {
   width: 12rem;
   min-width: 12rem;
+  padding-top: 0.5rem;
 }
 
 #jobs .jobs-list__item .role {
@@ -23521,6 +23522,44 @@ pre {
 
 @media screen and (max-width: 1023px) {
   #jobs .jobs-list__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+}
+#educations .educations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+#educations .educations-list__item {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+#educations .educations-list__item .period {
+  width: 12rem;
+  min-width: 12rem;
+  padding-top: 0.5rem;
+}
+
+#educations .educations-list__item .qualification {
+  color: var(--bulma-danger);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#educations .educations-list__item .school {
+  color: var(--bulma-info);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1023px) {
+  #educations .educations-list__item {
     display: flex;
     flex-direction: column;
     gap: 0;

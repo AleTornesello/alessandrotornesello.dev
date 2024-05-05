@@ -1,8 +1,7 @@
 @use "../bulma/utilities/mixins";
-@import "../bulma/utilities/initial-variables.scss";
 
-#jobs {
-  .jobs-list {
+#educations {
+  .educations-list {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -19,38 +18,24 @@
         padding-top: 0.5rem;
       }
 
-      .role {
+      .qualification {
         color: var(--bulma-danger);
         font-weight: bold;
         font-size: 1.5rem;
       }
 
-      .company {
+      .school {
         color: var(--bulma-info);
         font-weight: bold;
         font-size: 1.2rem;
-      }
-
-      .skills-list {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 12px;
-
-        &__item {
-          color: $orange;
-          // background-color: var(--bulma-warning-light);
-          padding: 4px 8px;
-          border-radius: 100px;
-        }
       }
     }
   }
 }
 
 @include mixins.touch {
-  #jobs {
-    .jobs-list {
+  #educations {
+    .educations-list {
       &__item {
         display: flex;
         flex-direction: column;

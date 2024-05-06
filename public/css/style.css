@@ -23423,6 +23423,7 @@ pre {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
+    text-align: center;
   }
 }
 .window__top-bar {
@@ -23473,11 +23474,18 @@ pre {
   align-items: center;
 }
 
+.window__address-bar__mobile-action {
+  display: none !important;
+}
+
 .window__address-bar__field {
   border: 1px solid rgba(255, 255, 255, 0.125);
   padding: 0.1rem 0.5rem;
   border-radius: 8px;
   flex-grow: 1;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
 }
 
 .window__body {
@@ -23494,6 +23502,20 @@ pre {
   margin-bottom: 0;
 }
 
+@media screen and (max-width: 1023px) {
+  .window__top-bar {
+    display: none;
+  }
+  .window__address-bar {
+    border-radius: 12px 12px 0 0;
+  }
+  .window__address-bar__action {
+    display: none !important;
+  }
+  .window__address-bar__mobile-action {
+    display: block !important;
+  }
+}
 #jobs .jobs-list {
   display: flex;
   flex-direction: column;
@@ -23530,12 +23552,6 @@ pre {
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 12px;
-}
-
-#jobs .jobs-list__item .skills-list__item {
-  color: hsl(14, 100%, 53%);
-  padding: 4px 8px;
-  border-radius: 100px;
 }
 
 @media screen and (max-width: 1023px) {

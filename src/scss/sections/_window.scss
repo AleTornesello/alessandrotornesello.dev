@@ -1,3 +1,5 @@
+@use "../bulma/utilities/mixins";
+
 .window {
   &__top-bar {
     display: flex;
@@ -46,11 +48,18 @@
     gap: 12px;
     align-items: center;
 
+    &__mobile-action {
+      display: none !important;
+    }
+
     &__field {
       border: 1px solid rgba(255, 255, 255, 0.125);
       padding: 0.1rem 0.5rem;
       border-radius: 8px;
       flex-grow: 1;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
     }
   }
 
@@ -64,6 +73,26 @@
 
       &:last-child {
         margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@include mixins.touch {
+  .window {
+    &__top-bar {
+      display: none;
+    }
+
+    &__address-bar {
+      border-radius: 12px 12px 0 0;
+
+      &__action {
+        display: none !important;
+      }
+
+      &__mobile-action {
+        display: block !important;
       }
     }
   }

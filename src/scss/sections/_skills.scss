@@ -1,8 +1,10 @@
-@use "../bulma/utilities/mixins";
-
 #skills {
   .skills-list {
     &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
       .progress-bar {
         height: 1rem;
         background-image: radial-gradient(#ffffff 1px, transparent 0);

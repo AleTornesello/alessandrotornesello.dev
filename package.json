@@ -9,7 +9,7 @@
     "sass": "sass ./src/scss/main.scss ./public/css/style.css",
     "build": "npm-run-all --sequential sass concat compress",
     "compress": "csso ./public/css/style.css -o ./public/css/style.css && csso ./public/css/vendors.css -o ./public/css/vendors.css --comments none",
-    "concat": "concat -o ./public/css/vendors.css ./src/vendors/fontawesome/fontawesome.min.css ./src/vendors/fontawesome/solid.min.css"
+    "concat": "concat -o ./public/css/vendors.css ./src/vendors/fontawesome/fontawesome.min.css ./src/vendors/fontawesome/solid.min.css  ./src/vendors/fontawesome/brands.min.css"
   },
   "author": "",
   "license": "ISC",

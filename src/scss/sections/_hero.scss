@@ -58,6 +58,18 @@
       }
     }
   }
+
+  .social-list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: start;
+    margin-top: 2rem;
+
+    a i {
+      font-size: 2rem;
+    }
+  }
 }
 
 @include mixins.touch {
@@ -70,6 +82,13 @@
         justify-content: center;
         text-align: center;
       }
+    }
+
+    .social-list {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

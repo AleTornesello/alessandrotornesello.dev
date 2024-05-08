@@ -1,0 +1,12 @@
+.footer {
+  .social-list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+
+    a i {
+      font-size: 2rem;
+    }
+  }
+}

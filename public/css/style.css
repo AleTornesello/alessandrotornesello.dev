@@ -23417,6 +23417,18 @@ pre {
   margin: 0 auto;
 }
 
+.hero .social-list {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: start;
+  margin-top: 2rem;
+}
+
+.hero .social-list a i {
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 1023px) {
   .hero__body .container {
     display: flex;
@@ -23424,6 +23436,12 @@ pre {
     align-items: center;
     justify-content: center;
     text-align: center;
+  }
+  .hero .social-list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
   }
 }
 .window__top-bar {
@@ -23744,6 +23762,17 @@ pre {
 
 #extra .extra-list__item .name {
   text-align: center;
+}
+
+.footer .social-list {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .social-list a i {
+  font-size: 2rem;
 }
 
 .section-title {

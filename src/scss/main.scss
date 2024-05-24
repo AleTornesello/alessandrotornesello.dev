@@ -1,3 +1,5 @@
+@use "bulma/utilities/mixins";
+
 @import "bulma";
 @import "theme";
 @import "sections";
@@ -11,3 +13,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
+// @include mixins.touch {
+//   html {
+//     font-size: 14px;
+//   }
+// }

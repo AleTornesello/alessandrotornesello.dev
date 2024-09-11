@@ -1,4 +1,39 @@
+@use "../bulma/utilities/mixins";
+
 #extra {
+  .section-title {
+    h1 {
+      width: fit-content;
+      background-image: url("../assets/images/underlines/light_blue_center.svg");
+      background-repeat: repeat-x;
+      background-position: bottom;
+      padding: 0 1rem 1rem 1rem;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background-image: url("../assets/images/underlines/light_blue_start.svg");
+        background-repeat: repeat-x;
+        width: 108px;
+        height: 80px;
+        bottom: 4px;
+        left: -108px;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-image: url("../assets/images/underlines/light_blue_end.svg");
+        background-repeat: repeat-x;
+        width: 108px;
+        height: 20px;
+        bottom: 4px;
+        right: -108px;
+      }
+    }
+  }
+
   .extra-list {
     &__item {
       display: flex;

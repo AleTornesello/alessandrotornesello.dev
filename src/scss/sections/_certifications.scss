@@ -1,4 +1,38 @@
+@use "../bulma/utilities/mixins";
+
 #certifications {
+  .section-title {
+    h1 {
+      width: fit-content;
+      background-image: url("../assets/images/underlines/green_center.svg");
+      background-repeat: repeat-x;
+      background-position: bottom;
+      padding: 0 1rem 1rem 1rem;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background-image: url("../assets/images/underlines/green_start.svg");
+        background-repeat: repeat-x;
+        width: 108px;
+        height: 80px;
+        bottom: 4px;
+        left: -108px;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-image: url("../assets/images/underlines/green_end.svg");
+        background-repeat: repeat-x;
+        width: 108px;
+        height: 20px;
+        bottom: 4px;
+        right: -108px;
+      }
+    }
+  }
   .certifications-list {
     &__item {
       display: flex;
@@ -18,6 +52,23 @@
         gap: 12px;
         flex-wrap: wrap;
         margin-top: 8px;
+      }
+    }
+  }
+}
+
+@include mixins.touch {
+  #certifications {
+
+    .section-title {
+      h1 {
+        &:before {
+          display: none;
+        }
+
+        &:after {
+          display: none;
+        }
       }
     }
   }

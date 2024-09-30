@@ -6,6 +6,7 @@ const sections = [
   document.getElementById("educations"),
   document.getElementById("skills"),
   document.getElementById("certifications"),
+  document.getElementById("contribs"),
   document.getElementById("extra"),
 ];
 

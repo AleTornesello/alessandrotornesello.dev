@@ -4,7 +4,9 @@ Personal website. Plain HTML5, CSS and JavaScript plus [Bulma](https://bulma.io)
 
 ## Run locally
 
-Serve the `public/` folder with any static file server, for example:
+Serve the `public/` folder with any static file server (opening `index.html`
+straight from disk won't run the JavaScript, because browsers block ES
+modules on `file://`), for example:
 
 ```sh
 npx serve public
@@ -26,6 +28,8 @@ public/
 │   └── fontawesome/
 ├── fonts/                # Bricolage Grotesque (headings), SIL OFL
 ├── js/
+│   ├── main.js           # entry module: wires up the modules below
+│   └── modules/          # typewriter, scrollspy, theme toggle
 └── assets/
 ```
 
@@ -38,7 +42,8 @@ matches their role.
 
 ### Theming
 
-The site follows the OS light/dark preference. Colors live in `tokens.css`;
+The site follows the OS light/dark preference until the visitor picks a theme
+with the toggle in the navigation bar; the choice is saved in `localStorage`. Colors live in `tokens.css`;
 each section sets one `--accent` that its title underline, timeline and tags
 share. Use `--accent-ink` when the accent is used as text: it is adjusted
 per theme for contrast.

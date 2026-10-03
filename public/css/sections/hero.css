@@ -90,9 +90,29 @@
   min-height: 1.5lh;
 }
 
-/* typer.js sets an inline color on the typed word; keep the heading color. */
-.hero__role .typer {
-  color: inherit !important;
+/* Blinking caret after the typed word. */
+.typewriter::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.1em;
+  background-color: currentColor;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+/* With reduced motion the word is static, so the caret is just noise. */
+@media (prefers-reduced-motion: reduce) {
+  .typewriter::after {
+    display: none;
+  }
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .hero__body {
@@ -168,5 +188,38 @@
       width: min(20rem, 80vw);
       height: auto;
     }
+  }
+}
+
+/*
+ * The page's one orchestrated moment: on load the intro lines rise in one
+ * after another, then the photo. The scroll hint nudges a few times later.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__intro > *,
+  .hero__photo {
+    animation: hero-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero__intro > :nth-child(2) { animation-delay: 80ms; }
+  .hero__intro > :nth-child(3) { animation-delay: 160ms; }
+  .hero__intro > :nth-child(4) { animation-delay: 240ms; }
+  .hero__photo { animation-delay: 200ms; }
+
+  .hero__scroll {
+    animation: hero-nudge 1.4s ease-in-out 2.5s 3;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+
+@keyframes hero-nudge {
+  50% {
+    translate: 0 8px;
   }
 }

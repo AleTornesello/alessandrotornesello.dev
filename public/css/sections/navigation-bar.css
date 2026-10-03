@@ -6,10 +6,13 @@
 }
 
 .navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   border-radius: 100px;
   margin: 0 auto;
   width: fit-content;
-  padding: 12px 24px;
+  padding: 12px 12px 12px 24px;
 }
 
 .navigation-bar__list {
@@ -31,6 +34,36 @@
   a {
     color: var(--bulma-text);
   }
+
+  /* Current section, set by js/modules/scrollspy.js */
+  a[aria-current] {
+    color: var(--bulma-text-strong);
+    text-decoration: underline 2px var(--active-accent);
+    text-underline-offset: 6px;
+  }
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--bulma-text);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--bulma-text-strong);
+    background-color: var(--line);
+  }
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 /*
@@ -45,11 +78,14 @@
 
   .navigation-bar {
     max-width: 100%;
-    padding: 0;
+    gap: 0;
+    padding: 0 6px 0 0;
     overflow: hidden;
   }
 
   .navigation-bar__list {
+    flex: 1;
+    min-width: 0;
     justify-content: flex-start;
     gap: 4px;
     padding: 6px 12px;

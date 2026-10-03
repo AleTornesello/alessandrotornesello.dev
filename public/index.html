@@ -10,11 +10,16 @@
     <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
     <link rel="preload" href="./css/vendor/bulma.min.css" as="style" />
     <link rel="preload" href="./fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+        // Apply the saved theme before the first paint (see js/modules/theme.js).
+        try {
+            const theme = localStorage.getItem("theme");
+            if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+        } catch { }
+    </script>
     <link rel="stylesheet" href="./css/main.css" />
-    <script async src="./js/script.js"></script>
-    <script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
+    <script type="module" src="./js/main.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <meta name="title" content="Alessandro Tornesello | Web Developer" />
     <meta name="description" content="Ciao! Mi chiamo Alessandro Tornesello. Sono un Web Developer." />
     <meta name="keywords"
@@ -69,19 +74,22 @@
                     <a href="#extra">Extra</a>
                 </li>
             </ul>
+            <button class="theme-toggle" type="button" aria-label="Cambia tema" hidden>
+                <i class="fa fa-solid fa-moon" aria-hidden="true"></i>
+            </button>
         </nav>
     </header>
 
     <main id="main">
         <section class="hero" aria-label="Presentazione">
-            <div class="hero__body animate__animated animate__fadeIn animate__slow">
+            <div class="hero__body">
                 <div class="hero__body__container">
-                    <div>
+                    <div class="hero__intro">
                         <p class="hero__greeting">Ciao! Mi chiamo</p>
                         <h1 class="hero__name">Alessandro Tornesello</h1>
                         <p class="hero__role">
                             Sono un
-                            <span class="typer" aria-hidden="true" data-delay="80"
+                            <span class="typewriter" aria-hidden="true" data-delay="80"
                                 data-words="Developer,Web Developer,Embedded Developer"></span>
                             <span class="is-sr-only">Web Developer ed Embedded Developer</span>
                         </p>
@@ -105,7 +113,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="hero__photo">
                         <div class="image-container glass shadow">
                             <img src="assets/images/me.jpeg" alt="Foto di Alessandro Tornesello" />
                             <ul class="other-images" aria-label="Tecnologie che uso">
@@ -126,8 +134,7 @@
                     </div>
                 </div>
             </div>
-            <div
-                class="hero__scroll has-text-centered animate__animated animate__bounce animate__delay-2s animate__infinite animate__slow">
+            <div class="hero__scroll has-text-centered">
                 <a href="#who-am-i" aria-label="Vai a Chi sono">
                     <i class="fa fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </a>
@@ -627,13 +634,7 @@
             </ul>
             <p class="mt-6">
                 Copyright &copy;
-                <span id="copyright">
-                    <script>
-                        document
-                            .getElementById("copyright")
-                            .appendChild(document.createTextNode(new Date().getFullYear()));
-                    </script>
-                </span>
+                <span data-current-year>2026</span>
                 All rights reserved | This site is made with
                 <i class="fa fa-solid fa-heart has-text-danger" aria-label="amore" role="img"></i> by Alessandro
                 Tornesello

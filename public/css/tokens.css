@@ -1,0 +1,71 @@
+/*
+ * Design tokens.
+ *
+ * Light values are the default; dark values apply when the OS prefers dark
+ * (unless the page forces light) or when data-theme="dark" / .theme-dark is
+ * set. This mirrors how Bulma itself switches themes.
+ */
+:root {
+  --font-display: "Bricolage Grotesque", var(--bulma-family-primary);
+
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --nav-offset: 6rem;
+
+  --surface: hsl(220 20% 98% / 0.78);
+  --surface-solid: hsl(220 16% 95%);
+  --line: hsl(220 15% 20% / 0.12);
+  --shadow: 0 10px 24px hsl(220 30% 20% / 0.1);
+  /* Accents used as text are mixed towards this color, for contrast. */
+  --ink-target: black;
+  --ink-mix: 45%;
+  /* Monochrome logos are black; keep them as they are on light backgrounds. */
+  --mono-logo-filter: none;
+  /* White logos (made for dark backgrounds) are inverted on light ones. */
+  --white-logo-filter: invert(100%);
+
+  --accent: var(--bulma-info);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: rgba(49, 54, 63, 0.75);
+    --surface-solid: rgb(49, 54, 63);
+    --line: rgba(255, 255, 255, 0.125);
+    --shadow: 0 10px 15px #0003;
+    --ink-target: white;
+    --ink-mix: 30%;
+    --white-logo-filter: none;
+    --mono-logo-filter: invert(100%) sepia(3%) saturate(12%) hue-rotate(172deg)
+      brightness(105%) contrast(100%);
+  }
+}
+
+[data-theme="dark"],
+.theme-dark {
+  --surface: rgba(49, 54, 63, 0.75);
+  --surface-solid: rgb(49, 54, 63);
+  --line: rgba(255, 255, 255, 0.125);
+  --shadow: 0 10px 15px #0003;
+  --ink-target: white;
+  --ink-mix: 30%;
+  --white-logo-filter: none;
+  --mono-logo-filter: invert(100%) sepia(3%) saturate(12%) hue-rotate(172deg)
+    brightness(105%) contrast(100%);
+}
+
+/*
+ * Each section has one accent color, shared by its title underline, its
+ * timeline and its tags. --accent-ink is the same color, darkened on light
+ * and lightened on dark, so it reads as text on the current theme.
+ */
+#jobs { --accent: #ffb70f; }
+#educations { --accent: #7585ff; }
+#skills { --accent: #ff6685; }
+#certifications { --accent: #3abb81; }
+#contribs { --accent: #a855f7; }
+#extra { --accent: #66d1ff; }
+
+section {
+  --accent-ink: color-mix(in oklch, var(--accent), var(--ink-target) var(--ink-mix));
+}

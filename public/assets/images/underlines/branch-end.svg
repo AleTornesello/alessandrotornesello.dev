@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="20" viewBox="0 0 108 20">
+  <!-- Used as a CSS mask: only the shape matters, the color comes from CSS. -->
+  <mask id="hollow-commits">
+    <rect width="108" height="20" fill="#fff"/>
+    <circle cx="30" cy="10" r="6"/>
+    <circle cx="80" cy="10" r="6"/>
+  </mask>
+  <g fill="none" stroke="#000" stroke-width="4" mask="url(#hollow-commits)">
+    <!-- Main line -->
+    <path d="M0 10H106" stroke-linecap="round"/>
+    <!-- Commits -->
+    <circle cx="30" cy="10" r="8"/>
+    <circle cx="80" cy="10" r="8"/>
+  </g>
+</svg>

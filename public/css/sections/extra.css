@@ -5,14 +5,12 @@
   gap: 1rem;
 
   .image-container {
-    border-radius: 12px;
-
     figure {
       margin: 0 auto;
     }
 
     img {
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       width: auto;
       height: 128px;
     }
@@ -20,5 +18,6 @@
 
   .name {
     text-align: center;
+    color: var(--bulma-text-strong);
   }
 }

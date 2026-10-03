@@ -1,5 +1,11 @@
-.skills-list__item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1.75rem 2.5rem;
+}
+
+.skill-group__title {
+  color: var(--bulma-text-strong);
+  font-size: 1.15rem;
+  font-weight: 700;
 }

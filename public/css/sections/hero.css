@@ -1,7 +1,5 @@
 .hero {
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: 100svh;
 
   .social-list {
     display: flex;
@@ -9,10 +7,6 @@
     align-items: center;
     justify-content: start;
     margin-top: 2rem;
-
-    a i {
-      font-size: 2rem;
-    }
   }
 
   .image-container {
@@ -21,7 +15,7 @@
     position: relative;
 
     img {
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
     }
   }
 
@@ -68,9 +62,37 @@
   }
 }
 
+.hero__greeting {
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.5rem);
+  font-weight: 500;
+}
+
+.hero__name {
+  color: var(--bulma-danger-on-scheme);
+  font-size: clamp(2.5rem, 1.25rem + 4.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.hero__role {
+  color: var(--bulma-info-on-scheme);
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+  font-weight: 600;
+  /* Reserve the line so the typing animation doesn't make the layout jump. */
+  min-height: 1.5lh;
+}
+
+/* typer.js sets an inline color on the typed word; keep the heading color. */
+.hero__role .typer {
+  color: inherit !important;
+}
+
 .hero__body {
   width: 100%;
-  height: 100%;
+  min-height: 100svh;
+  padding-block: 6rem;
   z-index: 20;
   display: flex;
   align-items: center;
@@ -94,6 +116,8 @@
 }
 
 .hero__body__container {
+  /* Paint above the grid background (an absolutely positioned ::before). */
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
@@ -135,6 +159,8 @@
 
     .image-container {
       margin-right: 0;
+      width: min(20rem, 80vw);
+      height: auto;
     }
   }
 }

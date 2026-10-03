@@ -17,12 +17,14 @@ public/
 ├── index.html
 ├── css/
 │   ├── main.css          # entry point: declares cascade layers and imports everything
-│   ├── base.css          # element defaults (html, body, scrollbar)
+│   ├── tokens.css        # design tokens: light/dark surfaces, section accents
+│   ├── base.css          # element defaults, font face, focus, reduced motion
 │   ├── utilities.css     # small helper classes (.glass, .shadow, ...)
-│   ├── components/       # reusable pieces (section title, fake browser window)
+│   ├── components/       # reusable pieces (section title, timeline, tags, window)
 │   ├── sections/         # one file per page section
 │   ├── vendor/           # Bulma 1.0 (compiled, default settings)
 │   └── fontawesome/
+├── fonts/                # Bricolage Grotesque (headings), SIL OFL
 ├── js/
 └── assets/
 ```
@@ -34,7 +36,14 @@ Vendor CSS (Bulma, Font Awesome) sits in the lowest layer, so custom rules
 always override it without `!important`. Put new rules in the layer that
 matches their role.
 
+### Theming
+
+The site follows the OS light/dark preference. Colors live in `tokens.css`;
+each section sets one `--accent` that its title underline, timeline and tags
+share. Use `--accent-ink` when the accent is used as text: it is adjusted
+per theme for contrast.
+
 ### Browser support
 
-The CSS uses native nesting and media query range syntax (`width < 1024px`),
-both Baseline since 2023.
+The CSS uses native nesting, media query range syntax (`width < 1024px`) and
+`color-mix()`, all Baseline since 2023.

@@ -4,9 +4,9 @@
   align-items: center;
   gap: 12px;
   padding: 0 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
-  border-radius: 12px 12px 0 0;
-  background-color: rgba(49, 54, 63, 1);
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background-color: var(--surface-solid);
 }
 
 .window__top-bar__button {
@@ -15,33 +15,32 @@
   border-radius: 50%;
 
   &:nth-child(1) {
-    background-color: #ff0000;
+    background-color: #ff5f57;
   }
 
   &:nth-child(2) {
-    background-color: #ffff00;
+    background-color: #febc2e;
   }
 
   &:nth-child(3) {
-    background-color: #00ff00;
+    background-color: #28c840;
   }
 }
 
 .window__top-bar__tab {
   padding: 8px 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.125);
-  border-left: 1px solid rgba(255, 255, 255, 0.125);
-  border-right: 1px solid rgba(255, 255, 255, 0.125);
-  border-bottom: 1px solid rgba(49, 54, 63, 1);
+  border: 1px solid var(--line);
+  border-bottom-color: var(--surface-solid);
   margin-top: 4px;
   margin-bottom: -1px;
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background-color: var(--surface-solid);
 }
 
 .window__address-bar {
   padding: 8px 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
-  background-color: rgba(49, 54, 63, 1);
+  border-bottom: 1px solid var(--line);
+  background-color: var(--surface-solid);
   display: flex;
   gap: 12px;
   align-items: center;
@@ -52,9 +51,9 @@
 }
 
 .window__address-bar__field {
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid var(--line);
   padding: 0.1rem 0.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   flex-grow: 1;
   text-wrap: nowrap;
   text-overflow: ellipsis;
@@ -62,9 +61,14 @@
 }
 
 .window__body {
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   max-width: 100%;
-  padding: 18px;
+  padding: 1.5rem;
+
+  p,
+  ul {
+    max-width: 70ch;
+  }
 
   p {
     margin-bottom: 12px;
@@ -81,7 +85,7 @@
   }
 
   .window__address-bar {
-    border-radius: 12px 12px 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 
   .window__address-bar__action {

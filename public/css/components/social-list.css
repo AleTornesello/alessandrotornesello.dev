@@ -1,0 +1,12 @@
+/* Row of social icon links, used in the hero and the footer. */
+.social-list a {
+  color: var(--bulma-text-strong);
+
+  &:hover {
+    color: var(--bulma-link);
+  }
+
+  i {
+    font-size: 2rem;
+  }
+}

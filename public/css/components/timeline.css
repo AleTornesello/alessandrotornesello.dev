@@ -1,0 +1,86 @@
+/*
+ * Chronological list drawn as a vertical git graph, matching the section
+ * title underlines: one commit per entry, joined by the branch line.
+ * The newest entry gets a filled commit when marked with .is-head.
+ *
+ *   period      ●  Role
+ *               │  Company
+ *               │  Description
+ *   period      ○  Role
+ */
+.timeline {
+  --graph-x: calc(11rem + 1.5rem); /* center of the branch line */
+  --commit-y: 1.15rem;             /* center of each commit, from the entry top */
+  --commit-size: 20px;
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  column-gap: 3rem;
+  padding-bottom: 2.5rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  .period {
+    padding-top: 0.45rem;
+    color: var(--bulma-text-weak);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .description {
+    max-width: 70ch;
+  }
+
+  /* Branch line down to the next commit */
+  &:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--graph-x) - 2px);
+    top: var(--commit-y);
+    bottom: calc(-1 * var(--commit-y));
+    width: 4px;
+    background-color: var(--accent);
+  }
+
+  /* Commit */
+  &::after {
+    content: "";
+    position: absolute;
+    left: calc(var(--graph-x) - var(--commit-size) / 2);
+    top: calc(var(--commit-y) - var(--commit-size) / 2);
+    width: var(--commit-size);
+    height: var(--commit-size);
+    border: 4px solid var(--accent);
+    border-radius: 50%;
+    background-color: var(--bulma-body-background-color);
+  }
+
+  &.is-head::after {
+    background-color: var(--accent);
+  }
+}
+
+@media screen and (width < 1024px) {
+  .timeline {
+    --graph-x: 10px;
+    --commit-y: 0.75rem;
+  }
+
+  .timeline__item {
+    grid-template-columns: minmax(0, 1fr);
+    padding-left: 2.25rem;
+
+    .period {
+      padding-top: 0;
+      margin-bottom: 0.25rem;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+/* Bulma tags, tinted with the accent of the section they are in. */
+.tag {
+  background-color: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent-ink);
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  font-weight: 600;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}

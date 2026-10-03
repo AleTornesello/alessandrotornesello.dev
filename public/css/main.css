@@ -11,11 +11,15 @@
 @import url("fontawesome/solid.min.css") layer(vendor);
 @import url("fontawesome/brands.min.css") layer(vendor);
 
+@import url("tokens.css") layer(base);
 @import url("base.css") layer(base);
 @import url("utilities.css") layer(utilities);
 
 @import url("components/section-title.css") layer(components);
 @import url("components/window.css") layer(components);
+@import url("components/timeline.css") layer(components);
+@import url("components/tag.css") layer(components);
+@import url("components/social-list.css") layer(components);
 
 @import url("sections/navigation-bar.css") layer(sections);
 @import url("sections/hero.css") layer(sections);

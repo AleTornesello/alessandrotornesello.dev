@@ -1,0 +1,58 @@
+/*
+ * Section title underlined with a small git graph: a branch on the left,
+ * a straight line under the text and two commits on the right.
+ *
+ * The caps are SVG masks filled with the section's --accent, so the same two
+ * files work for every section and theme. The line under the text is a
+ * gradient sitting at the same height as the masks' main line.
+ */
+section .section-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  text-align: center;
+
+  :is(h1, h2) {
+    --line-y: 12px; /* distance of the 4px line from the bottom edge */
+
+    width: fit-content;
+    position: relative;
+    padding: 0 1rem 1rem 1rem;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--bulma-text-strong);
+    background: linear-gradient(var(--accent) 0 0) left bottom var(--line-y) / 100% 4px no-repeat;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      width: 108px;
+      background-color: var(--accent);
+      mask-repeat: no-repeat;
+    }
+
+    &::before {
+      height: 80px;
+      left: -108px;
+      mask-image: url("../../assets/images/underlines/branch-start.svg");
+    }
+
+    &::after {
+      height: 20px;
+      right: -108px;
+      mask-image: url("../../assets/images/underlines/branch-end.svg");
+    }
+  }
+}
+
+/* The caps would overflow narrow screens. */
+@media screen and (width < 1024px) {
+  section .section-title :is(h1, h2)::before,
+  section .section-title :is(h1, h2)::after {
+    display: none;
+  }
+}

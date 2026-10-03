@@ -1,0 +1,28 @@
+/* 404 page */
+#not-found {
+  --accent: #ff6685;
+
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  text-align: center;
+
+  p {
+    max-width: 40ch;
+    margin: 1.5rem auto 2rem;
+  }
+}
+
+.not-found__home {
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background-color: var(--surface);
+  color: var(--bulma-text-strong);
+  font-weight: 600;
+
+  &:hover {
+    border-color: var(--accent);
+  }
+}

@@ -1,0 +1,90 @@
+<!doctype html>
+<!--
+  Template for public/assets/og-image.jpg (1200x630).
+  To regenerate: serve the repo root (npx serve .), open /tools/og-image.html
+  at a 1200x630 viewport and take a screenshot (DevTools: "Capture screenshot").
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face {
+    font-family: "Bricolage Grotesque";
+    font-weight: 200 800;
+    src: url("../public/fonts/bricolage-grotesque-latin-wght.woff2") format("woff2-variations");
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #14161a;
+    color: #f5f5f5;
+    font-family: "Bricolage Grotesque", sans-serif;
+    position: relative;
+  }
+  /* Same grid paper as the hero */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, #14161a 22px, transparent 1%) 50%,
+      linear-gradient(#14161a 22px, transparent 1%) 50%,
+      #3a3f4b;
+    background-size: 24px 24px;
+    mask-image: linear-gradient(0deg, transparent 10%, #000);
+  }
+  .card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 72px;
+    padding: 0 88px;
+  }
+  .text { flex: 1; }
+  .greeting { font-size: 34px; font-weight: 500; color: #c4c8d0; }
+  h1 {
+    font-size: 92px;
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: #ff6685;
+    margin: 10px 0 22px;
+  }
+  .role { font-size: 40px; font-weight: 600; color: #66d1ff; }
+  .branch { display: block; margin-top: 44px; }
+  .url { position: absolute; left: 88px; bottom: 48px; font-size: 26px; font-weight: 600; color: #c4c8d0; }
+  .photo {
+    width: 340px;
+    height: 340px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 20px 40px #0006;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="card">
+    <div class="text">
+      <p class="greeting">Hi! My name is</p>
+      <h1>Alessandro<br />Tornesello</h1>
+      <p class="role">Web &amp; Embedded Developer</p>
+      <!-- The section-title git graph, in the jobs accent -->
+      <svg class="branch" width="420" height="44" viewBox="0 0 420 44" fill="none" stroke="#ffb70f" stroke-width="4">
+        <path d="M2 34H418" stroke-linecap="round" />
+        <path d="M50 34C90 34 60 -1 98 9" />
+        <circle cx="50" cy="34" r="8" fill="#14161a" />
+        <circle cx="98" cy="9" r="7" fill="#14161a" />
+        <circle cx="98" cy="34" r="8" fill="#14161a" />
+        <circle cx="340" cy="34" r="8" fill="#14161a" />
+        <circle cx="390" cy="34" r="8" fill="#ffb70f" />
+      </svg>
+    </div>
+    <img class="photo" src="../public/assets/images/me-640.jpg" alt="" />
+  </div>
+  <p class="url">alessandrotornesello.dev</p>
+</body>
+</html>

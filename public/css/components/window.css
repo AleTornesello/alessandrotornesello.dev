@@ -1,0 +1,98 @@
+/* Fake browser window used by the "Who am I" and "Skills" sections. */
+.window__top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background-color: var(--surface-solid);
+}
+
+.window__top-bar__button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  &:nth-child(1) {
+    background-color: #ff5f57;
+  }
+
+  &:nth-child(2) {
+    background-color: #febc2e;
+  }
+
+  &:nth-child(3) {
+    background-color: #28c840;
+  }
+}
+
+.window__top-bar__tab {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-bottom-color: var(--surface-solid);
+  margin-top: 4px;
+  margin-bottom: -1px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background-color: var(--surface-solid);
+}
+
+.window__address-bar {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--surface-solid);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.window__address-bar__mobile-action {
+  display: none;
+}
+
+.window__address-bar__field {
+  border: 1px solid var(--line);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-md);
+  flex-grow: 1;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.window__body {
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  max-width: 100%;
+  padding: 1.5rem;
+
+  p,
+  ul {
+    max-width: 70ch;
+  }
+
+  p {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (width < 1024px) {
+  .window__top-bar {
+    display: none;
+  }
+
+  .window__address-bar {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .window__address-bar__action {
+    display: none;
+  }
+
+  .window__address-bar__mobile-action {
+    display: block;
+  }
+}

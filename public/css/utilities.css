@@ -1,0 +1,37 @@
+.glass {
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+}
+
+.shadow {
+  box-shadow: var(--shadow);
+}
+
+.list {
+  list-style: inside;
+}
+
+img.has-body-text-color {
+  filter: var(--mono-logo-filter);
+}
+
+img.is-white-logo {
+  filter: var(--white-logo-filter);
+}
+
+/*
+ * Icons from the SVG sprite (assets/icons.svg):
+ *   <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#github"></use></svg>
+ * They scale with font-size and take the text color, like an icon font.
+ */
+.svg-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}

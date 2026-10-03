@@ -1,0 +1,24 @@
+.extra-list__item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+
+  .image-container {
+    figure {
+      margin: 0 auto;
+    }
+
+    img {
+      border-radius: var(--radius-lg);
+      width: auto;
+      height: 128px;
+    }
+  }
+
+  .name {
+    text-align: center;
+    color: var(--bulma-text-strong);
+  }
+}

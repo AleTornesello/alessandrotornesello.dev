@@ -1,0 +1,118 @@
+.navigation-bar-container {
+  position: fixed;
+  top: 24px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 100px;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 12px 12px 12px 24px;
+}
+
+.navigation-bar__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  list-style: none;
+
+  &:hover .navigation-bar__list__item:not(:hover) {
+    opacity: 0.4;
+  }
+}
+
+.navigation-bar__list__item {
+  cursor: pointer;
+  white-space: nowrap;
+
+  a {
+    color: var(--bulma-text);
+  }
+
+  /* Current section, set by js/modules/scrollspy.js */
+  a[aria-current] {
+    color: var(--bulma-text-strong);
+    text-decoration: underline 2px var(--active-accent);
+    text-underline-offset: 6px;
+  }
+}
+
+/* Round icon/text buttons at the end of the bar: language and theme. */
+.nav-button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--bulma-text);
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--bulma-text-strong);
+    background-color: var(--line);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.language-toggle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/*
+ * On narrow screens the same pill scrolls sideways instead of wrapping.
+ * The edges fade out to hint that there is more to scroll to.
+ */
+@media screen and (width < 1024px) {
+  .navigation-bar-container {
+    top: 12px;
+    padding-inline: 16px;
+  }
+
+  .navigation-bar {
+    max-width: 100%;
+    gap: 0;
+    padding: 0 6px 0 0;
+    overflow: hidden;
+  }
+
+  .navigation-bar__list {
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 6px 12px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .navigation-bar__list__item {
+    scroll-snap-align: start;
+
+    a {
+      display: block;
+      padding: 6px 10px;
+    }
+  }
+}

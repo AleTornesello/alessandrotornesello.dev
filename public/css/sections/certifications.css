@@ -1,0 +1,17 @@
+.certifications-list__item {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+
+  .image-container img {
+    border-radius: var(--radius-lg);
+  }
+
+  .period {
+    color: var(--bulma-text);
+  }
+
+  .name {
+    color: var(--bulma-text-strong);
+  }
+}

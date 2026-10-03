@@ -6,6 +6,11 @@
 }
 
 .navigation-bar {
+  /* Lit by the accent of the section in view (set by the scrollspy). */
+  box-shadow:
+    var(--shadow),
+    0 6px 28px -8px color-mix(in srgb, var(--active-accent, transparent) var(--glow-hover), transparent);
+  transition: box-shadow 0.4s ease;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -33,6 +38,11 @@
 
   a {
     color: var(--bulma-text);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--bulma-text-strong);
+    }
   }
 
   /* Current section, set by js/modules/scrollspy.js */

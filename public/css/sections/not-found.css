@@ -22,7 +22,12 @@
   color: var(--bulma-text-strong);
   font-weight: 600;
 
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
   &:hover {
     border-color: var(--accent);
+    box-shadow: 0 8px 28px -8px color-mix(in srgb, var(--accent) var(--glow-hover), transparent);
   }
 }

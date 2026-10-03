@@ -1,0 +1,76 @@
+/*
+ * Colored lights.
+ *
+ * Every section casts a soft glow of its accent behind its content, on
+ * alternating sides, so the page shifts color as you scroll. The glows bleed
+ * past the section edges to blend into their neighbours, and sit at
+ * z-index -1 in the root stacking context, so they are always behind content.
+ */
+main > section.section {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -8rem 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 45% 40% at var(--glow-x, 12%) 45%,
+      color-mix(in srgb, var(--accent) var(--glow-bg), transparent),
+      transparent 70%
+    );
+  }
+
+  &:nth-of-type(odd) {
+    --glow-x: 88%;
+  }
+}
+
+/* Cards light up in their section's color when hovered or focused. */
+:is(.certifications-list__item, .contribs-list__item, .extra-list__item) {
+  box-shadow: var(--shadow);
+  transition:
+    translate 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover,
+  &:focus-within {
+    translate: 0 -4px;
+    box-shadow: var(--shadow-hover);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+}
+
+/* Commits glow, and the hovered entry's commit fills in. */
+.timeline__item {
+  &::before,
+  &::after {
+    box-shadow: 0 0 12px
+      color-mix(in srgb, var(--accent) var(--glow-shadow), transparent);
+    transition:
+      background-color 0.2s ease,
+      scale 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  &:hover::after {
+    background-color: var(--accent);
+    scale: 1.2;
+    box-shadow: 0 0 18px
+      color-mix(in srgb, var(--accent) var(--glow-hover), transparent);
+  }
+}
+
+.tag {
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--accent) 26%, transparent);
+    box-shadow: 0 4px 14px -4px
+      color-mix(in srgb, var(--accent) var(--glow-hover), transparent);
+  }
+}

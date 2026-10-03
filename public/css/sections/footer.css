@@ -1,3 +1,9 @@
+/* The full spectrum, closing the page. */
+.footer {
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, var(--spectrum)) 1;
+}
+
 .footer .social-list {
   display: flex;
   gap: 2rem;

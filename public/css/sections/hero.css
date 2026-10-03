@@ -1,5 +1,7 @@
 .hero {
   min-height: 100svh;
+  /* Keep the photo halo from widening the page on narrow screens. */
+  overflow-x: clip;
 
   .social-list {
     display: flex;
@@ -27,6 +29,14 @@
   .other-image {
     padding: 0.5rem;
     position: absolute;
+    transition:
+      translate 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 0.25s ease;
+
+    &:hover {
+      translate: 0 -6px;
+      box-shadow: var(--shadow-hover);
+    }
 
     &:nth-of-type(1) {
       width: 4rem;
@@ -74,7 +84,18 @@
 }
 
 .hero__name {
+  /* The section accents, mixed towards the text color so they stay legible. */
   color: var(--bulma-danger-on-scheme);
+  background: linear-gradient(
+    100deg,
+    color-mix(in oklch, var(--c-orange), var(--ink-target) 15%),
+    color-mix(in oklch, var(--c-pink), var(--ink-target) 15%) 35%,
+    color-mix(in oklch, var(--c-purple), var(--ink-target) 10%) 70%,
+    color-mix(in oklch, var(--c-blue), var(--ink-target) 10%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: clamp(2.5rem, 1.25rem + 4.5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.05;
@@ -130,15 +151,50 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, var(--bulma-body-background-color) calc(22px), transparent 1%) 50%,
-      linear-gradient(var(--bulma-body-background-color) calc(22px), transparent 1%) 50%,
-      var(--bulma-border);
+      linear-gradient(
+          90deg,
+          var(--bulma-body-background-color) calc(22px),
+          transparent 1%
+        )
+        50%,
+      linear-gradient(
+          var(--bulma-body-background-color) calc(22px),
+          transparent 1%
+        )
+        50%,
+      linear-gradient(115deg, var(--spectrum));
     background-position-x: center;
     background-position-y: center;
     background-size: 24px 24px;
     -webkit-mask-image: linear-gradient(0deg, transparent 5%, #000);
     mask-image: linear-gradient(0deg, transparent 5%, #000);
+    opacity: 0.5;
   }
+
+  /* Two soft lights in opposite corners, behind the grid. */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 40% 40% at 10% 20%,
+        color-mix(in srgb, var(--c-orange) var(--glow-bg), transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 40% 40% at 90% 60%,
+        color-mix(in srgb, var(--c-blue) var(--glow-bg), transparent),
+        transparent 70%
+      );
+  }
+}
+
+.hero__photo {
+  position: relative;
+  z-index: 0;
 }
 
 .hero__body__container {
@@ -201,10 +257,18 @@
     animation: hero-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
 
-  .hero__intro > :nth-child(2) { animation-delay: 80ms; }
-  .hero__intro > :nth-child(3) { animation-delay: 160ms; }
-  .hero__intro > :nth-child(4) { animation-delay: 240ms; }
-  .hero__photo { animation-delay: 200ms; }
+  .hero__intro > :nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .hero__intro > :nth-child(3) {
+    animation-delay: 160ms;
+  }
+  .hero__intro > :nth-child(4) {
+    animation-delay: 240ms;
+  }
+  .hero__photo {
+    animation-delay: 200ms;
+  }
 
   .hero__scroll {
     animation: hero-nudge 1.4s ease-in-out 2.5s 3;

@@ -6,10 +6,6 @@
   border: 1px solid var(--line);
 }
 
-.shadow {
-  box-shadow: var(--shadow);
-}
-
 .list {
   list-style: inside;
 }

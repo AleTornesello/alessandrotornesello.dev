@@ -26,6 +26,24 @@
   --white-logo-filter: invert(100%);
 
   --accent: var(--bulma-info);
+
+  /*
+   * The section accents, also used together as one spectrum (hero name,
+   * grid paper, scrollbar, footer rule).
+   */
+  --c-orange: #ff8c42;
+  --c-yellow: #ffb70f;
+  --c-blue: #7585ff;
+  --c-pink: #ff6685;
+  --c-green: #3abb81;
+  --c-purple: #a855f7;
+  --c-cyan: #66d1ff;
+  --spectrum: var(--c-orange), var(--c-pink), var(--c-purple), var(--c-blue), var(--c-cyan);
+
+  /* Strength of the colored lights; light backgrounds need less. */
+  --glow-bg: 12%;
+  --glow-shadow: 28%;
+  --glow-hover: 42%;
 }
 
 @media screen and (width < 1024px) {
@@ -42,6 +60,9 @@
     --shadow: 0 10px 15px #0003;
     --ink-target: white;
     --ink-mix: 30%;
+    --glow-bg: 16%;
+    --glow-shadow: 40%;
+    --glow-hover: 60%;
     --white-logo-filter: none;
     --mono-logo-filter: invert(100%) sepia(3%) saturate(12%) hue-rotate(172deg)
       brightness(105%) contrast(100%);
@@ -56,6 +77,9 @@
   --shadow: 0 10px 15px #0003;
   --ink-target: white;
   --ink-mix: 30%;
+  --glow-bg: 16%;
+  --glow-shadow: 40%;
+  --glow-hover: 60%;
   --white-logo-filter: none;
   --mono-logo-filter: invert(100%) sepia(3%) saturate(12%) hue-rotate(172deg)
     brightness(105%) contrast(100%);
@@ -66,14 +90,21 @@
  * timeline and its tags. --accent-ink is the same color, darkened on light
  * and lightened on dark, so it reads as text on the current theme.
  */
-#who-am-i { --accent: #ff8c42; }
-#jobs { --accent: #ffb70f; }
-#educations { --accent: #7585ff; }
-#skills { --accent: #ff6685; }
-#certifications { --accent: #3abb81; }
-#contribs { --accent: #a855f7; }
-#extra { --accent: #66d1ff; }
+.hero { --accent: var(--c-pink); }
+#who-am-i { --accent: var(--c-orange); }
+#jobs { --accent: var(--c-yellow); }
+#educations { --accent: var(--c-blue); }
+#skills { --accent: var(--c-pink); }
+#certifications { --accent: var(--c-green); }
+#contribs { --accent: var(--c-purple); }
+#extra { --accent: var(--c-cyan); }
 
+/*
+ * Inside a section, shadows are tinted with its accent, as if the content
+ * were lit by the section's color.
+ */
 section {
   --accent-ink: color-mix(in oklch, var(--accent), var(--ink-target) var(--ink-mix));
+  --shadow: 0 14px 36px -10px color-mix(in srgb, var(--accent) var(--glow-shadow), transparent);
+  --shadow-hover: 0 20px 48px -10px color-mix(in srgb, var(--accent) var(--glow-hover), transparent);
 }

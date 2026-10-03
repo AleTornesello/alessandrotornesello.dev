@@ -1,12 +1,29 @@
-/* Row of social icon links, used in the hero and the footer. */
+/*
+ * Row of social icon links, used in the hero and the footer.
+ * Each link lights up in its own color from the site palette.
+ */
 .social-list a {
-  color: var(--bulma-text-strong);
+  --glow: var(--c-blue);
 
-  &:hover {
-    color: var(--bulma-link);
+  display: inline-block;
+  color: var(--bulma-text-strong);
+  transition:
+    color 0.2s ease,
+    translate 0.2s ease,
+    filter 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--glow);
+    translate: 0 -3px;
+    filter: drop-shadow(0 4px 10px color-mix(in srgb, var(--glow) 70%, transparent));
   }
 
   .svg-icon {
     font-size: 2rem;
   }
 }
+
+.social-list li:nth-child(1) a { --glow: var(--c-pink); }
+.social-list li:nth-child(2) a { --glow: var(--c-purple); }
+.social-list li:nth-child(3) a { --glow: var(--c-blue); }

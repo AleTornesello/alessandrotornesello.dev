@@ -1,0 +1,33 @@
+.navigation-bar-container {
+  position: fixed;
+  top: 24px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navigation-bar {
+  border-radius: 100px;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 12px 24px;
+}
+
+.navigation-bar__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  list-style: none;
+
+  &:hover .navigation-bar__list__item:not(:hover) {
+    opacity: 0.4;
+  }
+}
+
+.navigation-bar__list__item {
+  cursor: pointer;
+
+  a {
+    color: var(--bulma-text);
+  }
+}

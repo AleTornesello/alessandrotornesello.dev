@@ -1,0 +1,28 @@
+/*
+ * Entry stylesheet.
+ *
+ * Cascade layers, lowest to highest priority. Vendor CSS sits in the lowest
+ * layer, so our own rules always win without needing !important.
+ */
+@layer vendor, base, utilities, components, sections;
+
+@import url("vendor/bulma.min.css") layer(vendor);
+@import url("fontawesome/fontawesome.min.css") layer(vendor);
+@import url("fontawesome/solid.min.css") layer(vendor);
+@import url("fontawesome/brands.min.css") layer(vendor);
+
+@import url("base.css") layer(base);
+@import url("utilities.css") layer(utilities);
+
+@import url("components/section-title.css") layer(components);
+@import url("components/window.css") layer(components);
+
+@import url("sections/navigation-bar.css") layer(sections);
+@import url("sections/hero.css") layer(sections);
+@import url("sections/jobs.css") layer(sections);
+@import url("sections/educations.css") layer(sections);
+@import url("sections/skills.css") layer(sections);
+@import url("sections/certifications.css") layer(sections);
+@import url("sections/contribs.css") layer(sections);
+@import url("sections/extra.css") layer(sections);
+@import url("sections/footer.css") layer(sections);

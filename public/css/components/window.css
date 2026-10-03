@@ -1,0 +1,94 @@
+/* Fake browser window used by the "Who am I" and "Skills" sections. */
+.window__top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 12px 12px 0 0;
+  background-color: rgba(49, 54, 63, 1);
+}
+
+.window__top-bar__button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  &:nth-child(1) {
+    background-color: #ff0000;
+  }
+
+  &:nth-child(2) {
+    background-color: #ffff00;
+  }
+
+  &:nth-child(3) {
+    background-color: #00ff00;
+  }
+}
+
+.window__top-bar__tab {
+  padding: 8px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.125);
+  border-left: 1px solid rgba(255, 255, 255, 0.125);
+  border-right: 1px solid rgba(255, 255, 255, 0.125);
+  border-bottom: 1px solid rgba(49, 54, 63, 1);
+  margin-top: 4px;
+  margin-bottom: -1px;
+  border-radius: 8px 8px 0 0;
+}
+
+.window__address-bar {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+  background-color: rgba(49, 54, 63, 1);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.window__address-bar__mobile-action {
+  display: none;
+}
+
+.window__address-bar__field {
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 0.1rem 0.5rem;
+  border-radius: 8px;
+  flex-grow: 1;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.window__body {
+  border-radius: 0 0 12px 12px;
+  max-width: 100%;
+  padding: 18px;
+
+  p {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (width < 1024px) {
+  .window__top-bar {
+    display: none;
+  }
+
+  .window__address-bar {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .window__address-bar__action {
+    display: none;
+  }
+
+  .window__address-bar__mobile-action {
+    display: block;
+  }
+}

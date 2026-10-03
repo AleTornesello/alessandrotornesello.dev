@@ -1,0 +1,49 @@
+.contribs-list__item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+
+  .image-container {
+    border-radius: 12px;
+
+    figure {
+      margin: 0 auto;
+    }
+
+    img {
+      border-radius: 12px;
+      width: auto;
+      height: 128px;
+    }
+  }
+
+  .name {
+    text-align: center;
+  }
+
+  .commits {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .commit {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255);
+    }
+
+    .hash {
+      background-color: rgba(255, 255, 255, 0.125);
+      color: rgba(255, 255, 255);
+      padding: 4px 8px;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+}

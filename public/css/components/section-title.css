@@ -1,0 +1,93 @@
+/*
+ * Section title with a hand-drawn underline.
+ *
+ * The underline is made of three SVGs: a repeating center, plus a start and
+ * an end cap. Each section picks its color by setting the three custom
+ * properties below. They are declared in this file, next to where they are
+ * used, so the relative url() paths resolve consistently.
+ */
+section .section-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  text-align: center;
+
+  h1 {
+    width: fit-content;
+    background-image: var(--underline-center);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    padding: 0 1rem 1rem 1rem;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background-repeat: repeat-x;
+      width: 108px;
+      bottom: 4px;
+    }
+
+    &::before {
+      background-image: var(--underline-start);
+      height: 80px;
+      left: -108px;
+    }
+
+    &::after {
+      background-image: var(--underline-end);
+      height: 20px;
+      right: -108px;
+    }
+  }
+}
+
+#jobs .section-title {
+  --underline-start: url("../../assets/images/underlines/yellow_start.svg");
+  --underline-center: url("../../assets/images/underlines/yellow_center.svg");
+  --underline-end: url("../../assets/images/underlines/yellow_end.svg");
+}
+
+#educations .section-title {
+  --underline-start: url("../../assets/images/underlines/blue_start.svg");
+  --underline-center: url("../../assets/images/underlines/blue_center.svg");
+  --underline-end: url("../../assets/images/underlines/blue_end.svg");
+}
+
+#skills .section-title {
+  --underline-start: url("../../assets/images/underlines/red_start.svg");
+  --underline-center: url("../../assets/images/underlines/red_center.svg");
+  --underline-end: url("../../assets/images/underlines/red_end.svg");
+}
+
+#certifications .section-title {
+  --underline-start: url("../../assets/images/underlines/green_start.svg");
+  --underline-center: url("../../assets/images/underlines/green_center.svg");
+  --underline-end: url("../../assets/images/underlines/green_end.svg");
+}
+
+#contribs .section-title {
+  --underline-start: url("../../assets/images/underlines/purple_start.svg");
+  --underline-center: url("../../assets/images/underlines/purple_center.svg");
+  --underline-end: url("../../assets/images/underlines/purple_end.svg");
+}
+
+#extra .section-title {
+  --underline-start: url("../../assets/images/underlines/light_blue_start.svg");
+  --underline-center: url("../../assets/images/underlines/light_blue_center.svg");
+  --underline-end: url("../../assets/images/underlines/light_blue_end.svg");
+}
+
+@media screen and (width < 1024px) {
+  /* Contribs and Extra kept their caps on touch screens in the original. */
+  #jobs,
+  #educations,
+  #skills,
+  #certifications {
+    .section-title h1::before,
+    .section-title h1::after {
+      display: none;
+    }
+  }
+}

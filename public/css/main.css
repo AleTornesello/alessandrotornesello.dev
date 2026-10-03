@@ -7,9 +7,6 @@
 @layer vendor, base, utilities, components, sections;
 
 @import url("vendor/bulma.min.css") layer(vendor);
-@import url("fontawesome/fontawesome.min.css") layer(vendor);
-@import url("fontawesome/solid.min.css") layer(vendor);
-@import url("fontawesome/brands.min.css") layer(vendor);
 
 @import url("tokens.css") layer(base);
 @import url("base.css") layer(base);

@@ -6,7 +6,7 @@
     color: var(--bulma-link);
   }
 
-  i {
+  .svg-icon {
     font-size: 2rem;
   }
 }

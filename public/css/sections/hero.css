@@ -161,7 +161,7 @@
   a {
     color: var(--bulma-text);
 
-    i {
+    .svg-icon {
       margin: 0 auto;
     }
   }

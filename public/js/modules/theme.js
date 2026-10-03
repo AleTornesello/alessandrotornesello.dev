@@ -10,13 +10,14 @@ const prefersDark = matchMedia("(prefers-color-scheme: dark)");
 const currentTheme = () => root.dataset.theme ?? (prefersDark.matches ? "dark" : "light");
 
 export function initThemeToggle(button) {
-  const icon = button.querySelector("i");
+  const icon = button.querySelector("use");
 
   const render = () => {
     const isDark = currentTheme() === "dark";
     button.setAttribute("aria-label", isDark ? "Passa al tema chiaro" : "Passa al tema scuro");
-    icon.classList.toggle("fa-sun", isDark);
-    icon.classList.toggle("fa-moon", !isDark);
+    // Swap the sprite symbol, keeping the sprite file path.
+    const href = icon.getAttribute("href").replace(/#.*/, isDark ? "#sun" : "#moon");
+    icon.setAttribute("href", href);
   };
 
   button.addEventListener("click", () => {

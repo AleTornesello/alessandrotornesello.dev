@@ -19,7 +19,6 @@
     </script>
     <link rel="stylesheet" href="./css/main.css" />
     <script type="module" src="./js/main.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css" />
     <meta name="title" content="Alessandro Tornesello | Web Developer" />
     <meta name="description" content="Ciao! Mi chiamo Alessandro Tornesello. Sono un Web Developer." />
     <meta name="keywords"
@@ -75,7 +74,7 @@
                 </li>
             </ul>
             <button class="theme-toggle" type="button" aria-label="Cambia tema" hidden>
-                <i class="fa fa-solid fa-moon" aria-hidden="true"></i>
+                <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#moon"></use></svg>
             </button>
         </nav>
     </header>
@@ -96,26 +95,30 @@
                         <ul class="social-list">
                             <li>
                                 <a href="mailto:alessandro.tornesello99@gmail.com" aria-label="Email">
-                                    <i class="fa fa-solid fa-envelope" aria-hidden="true"></i>
+                                    <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#envelope"></use></svg>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://github.com/AleTornesello" target="_blank" rel="noopener"
                                     aria-label="GitHub (si apre in una nuova scheda)">
-                                    <i class="fa fa-brands fa-github" aria-hidden="true"></i>
+                                    <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#github"></use></svg>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.linkedin.com/in/alessandro-tornesello/" target="_blank"
                                     rel="noopener" aria-label="LinkedIn (si apre in una nuova scheda)">
-                                    <i class="fa fa-brands fa-linkedin" aria-hidden="true"></i>
+                                    <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#linkedin"></use></svg>
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="hero__photo">
                         <div class="image-container glass shadow">
-                            <img src="assets/images/me.jpeg" alt="Foto di Alessandro Tornesello" />
+                            <picture>
+                                <source type="image/avif" srcset="assets/images/me-320.avif 320w, assets/images/me-640.avif 640w" sizes="(width < 1024px) min(20rem, 80vw), 20rem" />
+                                <source type="image/webp" srcset="assets/images/me-320.webp 320w, assets/images/me-640.webp 640w" sizes="(width < 1024px) min(20rem, 80vw), 20rem" />
+                                <img src="assets/images/me-640.jpg" width="640" height="640" alt="Foto di Alessandro Tornesello" fetchpriority="high" />
+                            </picture>
                             <ul class="other-images" aria-label="Tecnologie che uso">
                                 <li class="other-image glass shadow">
                                     <img src="assets/images/js.svg" alt="JavaScript" />
@@ -136,7 +139,7 @@
             </div>
             <div class="hero__scroll has-text-centered">
                 <a href="#who-am-i" aria-label="Vai a Chi sono">
-                    <i class="fa fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#chevron-down"></use></svg>
                 </a>
             </div>
         </section>
@@ -154,13 +157,13 @@
                         <div class="window__top-bar__tab">Who am I</div>
                     </div>
                     <div class="window__address-bar" aria-hidden="true">
-                        <i class="window__address-bar__action fa fa-solid fa-arrow-left"></i>
-                        <i class="window__address-bar__action fa fa-solid fa-arrow-right"></i>
-                        <i class="fa fa-solid fa-home"></i>
+                        <svg class="svg-icon window__address-bar__action" aria-hidden="true"><use href="assets/icons.svg#arrow-left"></use></svg>
+                        <svg class="svg-icon window__address-bar__action" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg>
+                        <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#house"></use></svg>
                         <div class="window__address-bar__field">
                             https://alessandrotornesello.dev/who-am-i
                         </div>
-                        <i class="window__address-bar__mobile-action fa fa-solid fa-ellipsis-vertical"></i>
+                        <svg class="svg-icon window__address-bar__mobile-action" aria-hidden="true"><use href="assets/icons.svg#ellipsis-vertical"></use></svg>
                     </div>
                     <div class="window__body">
                         <p>
@@ -326,13 +329,13 @@
                         <div class="window__top-bar__tab">Skills</div>
                     </div>
                     <div class="window__address-bar" aria-hidden="true">
-                        <i class="window__address-bar__action fa fa-solid fa-arrow-left"></i>
-                        <i class="window__address-bar__action fa fa-solid fa-arrow-right"></i>
-                        <i class="fa fa-solid fa-home"></i>
+                        <svg class="svg-icon window__address-bar__action" aria-hidden="true"><use href="assets/icons.svg#arrow-left"></use></svg>
+                        <svg class="svg-icon window__address-bar__action" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg>
+                        <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#house"></use></svg>
                         <div class="window__address-bar__field">
                             https://alessandrotornesello.dev/skills
                         </div>
-                        <i class="window__address-bar__mobile-action fa fa-solid fa-ellipsis-vertical"></i>
+                        <svg class="svg-icon window__address-bar__mobile-action" aria-hidden="true"><use href="assets/icons.svg#ellipsis-vertical"></use></svg>
                     </div>
                     <div class="window__body">
                         <div class="skill-groups">
@@ -378,7 +381,7 @@
                         <li class="certifications-list__item glass">
                             <div class="image-container">
                                 <figure class="image is-96x96">
-                                    <img src="assets/images/paloalto.png" alt="" />
+                                    <img src="assets/images/paloalto.webp" width="192" height="192" alt="" loading="lazy" decoding="async" />
                                 </figure>
                             </div>
                             <article>
@@ -397,7 +400,7 @@
                         <li class="certifications-list__item glass">
                             <div class="image-container">
                                 <figure class="image is-96x96">
-                                    <img src="assets/images/paloalto.png" alt="" />
+                                    <img src="assets/images/paloalto.webp" width="192" height="192" alt="" loading="lazy" decoding="async" />
                                 </figure>
                             </div>
                             <article>
@@ -416,7 +419,7 @@
                         <li class="certifications-list__item glass">
                             <div class="image-container">
                                 <figure class="image is-96x96">
-                                    <img src="assets/images/onstairs.png" alt="" />
+                                    <img src="assets/images/onstairs.png" width="225" height="225" alt="" loading="lazy" decoding="async" />
                                 </figure>
                             </div>
                             <article>
@@ -435,7 +438,7 @@
                         <li class="certifications-list__item glass">
                             <div class="image-container">
                                 <figure class="image is-96x96">
-                                    <img src="assets/images/cambridge.png" alt="" />
+                                    <img src="assets/images/cambridge.webp" width="192" height="192" alt="" loading="lazy" decoding="async" />
                                 </figure>
                             </div>
                             <article>
@@ -449,7 +452,7 @@
                         <li class="certifications-list__item glass">
                             <div class="image-container">
                                 <figure class="image is-96x96">
-                                    <img src="assets/images/ccna.png" alt="" />
+                                    <img src="assets/images/ccna.webp" width="192" height="192" alt="" loading="lazy" decoding="async" />
                                 </figure>
                             </div>
                             <article>
@@ -468,7 +471,7 @@
                         <li class="certifications-list__item glass">
                             <div class="image-container">
                                 <figure class="image is-96x96">
-                                    <img src="assets/images/ccna.png" alt="" />
+                                    <img src="assets/images/ccna.webp" width="192" height="192" alt="" loading="lazy" decoding="async" />
                                 </figure>
                             </div>
                             <article>
@@ -498,7 +501,7 @@
                             <article class="contribs-list__item glass">
                                 <div class="image-container">
                                     <figure class="image is-128x128">
-                                        <img class="is-white-logo" src="assets/images/destructive-farm.png" alt="" />
+                                        <img class="is-white-logo" src="assets/images/destructive-farm.png" width="300" height="300" alt="" loading="lazy" decoding="async" />
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">Destructive Farm</h3>
@@ -520,7 +523,7 @@
                             <article class="contribs-list__item glass">
                                 <div class="image-container">
                                     <figure class="image is-128x128">
-                                        <img class="has-body-text-color" src="assets/images/primeng.webp" alt="" />
+                                        <img class="has-body-text-color" src="assets/images/primeng.webp" width="256" height="256" alt="" loading="lazy" decoding="async" />
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">PrimeNG</h3>
@@ -542,7 +545,7 @@
                             <article class="contribs-list__item glass">
                                 <div class="image-container">
                                     <figure class="image is-128x128">
-                                        <img class="is-white-logo" src="assets/images/meshtastic.png" alt="" />
+                                        <img class="is-white-logo" src="assets/images/meshtastic.png" width="300" height="300" alt="" loading="lazy" decoding="async" />
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">FakeTec PCB</h3>
@@ -577,7 +580,7 @@
                             <article class="extra-list__item glass">
                                 <div class="image-container">
                                     <figure class="image is-128x128">
-                                        <img class="has-body-text-color" src="assets/images/ccit.png" alt="" />
+                                        <img class="has-body-text-color" src="assets/images/ccit.png" width="345" height="403" alt="" loading="lazy" decoding="async" />
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">CyberChallenge.IT</h3>
@@ -592,7 +595,7 @@
                             <article class="extra-list__item glass">
                                 <div class="image-container">
                                     <figure class="image is-128x128">
-                                        <img class="has-body-text-color" src="assets/images/hackathon.png" alt="" />
+                                        <img class="has-body-text-color" src="assets/images/hackathon.webp" width="241" height="256" alt="" loading="lazy" decoding="async" />
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">Hackathon</h3>
@@ -616,19 +619,19 @@
             <ul class="social-list" aria-labelledby="footer-contacts">
                 <li>
                     <a href="mailto:alessandro.tornesello99@gmail.com" aria-label="Email">
-                        <i class="fa fa-solid fa-envelope" aria-hidden="true"></i>
+                        <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#envelope"></use></svg>
                     </a>
                 </li>
                 <li>
                     <a href="https://github.com/AleTornesello" target="_blank" rel="noopener"
                         aria-label="GitHub (si apre in una nuova scheda)">
-                        <i class="fa fa-brands fa-github" aria-hidden="true"></i>
+                        <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#github"></use></svg>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.linkedin.com/in/alessandro-tornesello/" target="_blank" rel="noopener"
                         aria-label="LinkedIn (si apre in una nuova scheda)">
-                        <i class="fa fa-brands fa-linkedin" aria-hidden="true"></i>
+                        <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#linkedin"></use></svg>
                     </a>
                 </li>
             </ul>
@@ -636,7 +639,7 @@
                 Copyright &copy;
                 <span data-current-year>2026</span>
                 All rights reserved | This site is made with
-                <i class="fa fa-solid fa-heart has-text-danger" aria-label="amore" role="img"></i> by Alessandro
+                <svg class="svg-icon has-text-danger" aria-label="amore" role="img"><use href="assets/icons.svg#heart"></use></svg> by Alessandro
                 Tornesello
             </p>
         </div>

@@ -10,7 +10,8 @@
 
   --radius-md: 8px;
   --radius-lg: 12px;
-  --nav-offset: 6rem;
+  /* Extra anchor offset; section padding already clears most of the fixed nav. */
+  --nav-offset: 1.5rem;
 
   --surface: hsl(220 20% 98% / 0.78);
   --surface-solid: hsl(220 16% 95%);
@@ -25,6 +26,12 @@
   --white-logo-filter: invert(100%);
 
   --accent: var(--bulma-info);
+}
+
+@media screen and (width < 1024px) {
+  :root {
+    --nav-offset: 1rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,6 +66,7 @@
  * timeline and its tags. --accent-ink is the same color, darkened on light
  * and lightened on dark, so it reads as text on the current theme.
  */
+#who-am-i { --accent: #ff8c42; }
 #jobs { --accent: #ffb70f; }
 #educations { --accent: #7585ff; }
 #skills { --accent: #ff6685; }

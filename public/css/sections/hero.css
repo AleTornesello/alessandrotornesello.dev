@@ -62,6 +62,12 @@
   }
 }
 
+/* Not headings, but part of the same display lockup as the name. */
+.hero__greeting,
+.hero__role {
+  font-family: var(--font-display);
+}
+
 .hero__greeting {
   font-size: clamp(1.25rem, 1rem + 0.8vw, 1.5rem);
   font-weight: 500;

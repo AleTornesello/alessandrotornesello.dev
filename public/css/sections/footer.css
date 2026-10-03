@@ -3,4 +3,11 @@
   gap: 2rem;
   align-items: center;
   justify-content: center;
+  /* Undo Bulma's .content list styles. */
+  list-style: none;
+  margin: 0;
+
+  li + li {
+    margin-top: 0;
+  }
 }

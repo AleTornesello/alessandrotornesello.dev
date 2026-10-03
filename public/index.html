@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Alessandro Tornesello | Web Developer</title>
-    <meta name="description"
-        content="Alessandro Tornesello, Frontend Web Developer ed Embedded Developer. Esperienza con Angular, Vue, Nuxt e Arduino, certificazioni e contributi open source." />
+    <title data-i18n="meta.title">Alessandro Tornesello | Web Developer</title>
+    <meta name="description" data-i18n-content="meta.description"
+        content="Alessandro Tornesello, Frontend Web Developer and Embedded Developer. Experience with Angular, Vue, Nuxt and Arduino, certifications and open source work." />
     <link rel="canonical" href="https://alessandrotornesello.dev/" />
 
-    <!-- Theme: the inline script applies a saved choice before the first paint (see js/modules/theme.js). -->
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)" />
     <script>
-        try {
-            const theme = localStorage.getItem("theme");
-            if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
-        } catch { }
+        // Runs before the first paint. Keep in sync with js/modules/theme.js and js/modules/i18n.js.
+        (() => {
+            const root = document.documentElement;
+            let saved = {};
+            try {
+                saved = { theme: localStorage.getItem("theme"), lang: localStorage.getItem("lang") };
+            } catch { }
+
+            if (saved.theme === "light" || saved.theme === "dark") root.dataset.theme = saved.theme;
+
+            // Language: the saved choice, else the first supported browser language, else English.
+            const supported = ["en", "it"];
+            const preferred = navigator.languages?.length ? navigator.languages : [navigator.language];
+            const lang = supported.includes(saved.lang)
+                ? saved.lang
+                : preferred.map((l) => String(l).split("-")[0].toLowerCase()).find((l) => supported.includes(l)) ?? "en";
+            root.lang = lang;
+
+            // The page is written in English: hide it until main.js has translated it,
+            // and show it anyway if that doesn't happen.
+            if (lang !== "en") {
+                root.dataset.i18nPending = "";
+                setTimeout(() => delete root.dataset.i18nPending, 2000);
+            }
+        })();
     </script>
 
     <link rel="preload" href="./css/vendor/bulma.min.css" as="style" />
@@ -30,14 +50,16 @@
     <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="manifest.webmanifest" />
 
-    <!-- Link previews (Open Graph, also read by X/Twitter, LinkedIn, Slack, WhatsApp...) -->
+    <!-- Link previews (Open Graph, also read by X/Twitter, LinkedIn, Slack, WhatsApp...).
+         Crawlers don't run JavaScript, so these stay in English. -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Alessandro Tornesello" />
-    <meta property="og:locale" content="it_IT" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="it_IT" />
     <meta property="og:url" content="https://alessandrotornesello.dev/" />
     <meta property="og:title" content="Alessandro Tornesello | Web Developer" />
     <meta property="og:description"
-        content="Frontend Web Developer ed Embedded Developer. Esperienza, competenze, certificazioni e contributi open source." />
+        content="Frontend Web Developer and Embedded Developer. Experience, skills, certifications and open source contributions." />
     <meta property="og:image" content="https://alessandrotornesello.dev/assets/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -61,6 +83,7 @@
                 "name": "Istituto d'Istruzione Superiore \"Antonio Meucci\""
             },
             "knowsAbout": ["Angular", "Vue.js", "Nuxt", "JavaScript", "TypeScript", "HTML", "CSS", "Arduino", "STM32", "Python", "Cybersecurity"],
+            "knowsLanguage": ["it", "en"],
             "sameAs": [
                 "https://github.com/AleTornesello",
                 "https://www.linkedin.com/in/alessandro-tornesello/"
@@ -70,51 +93,53 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Vai al contenuto</a>
+    <a class="skip-link" href="#main" data-i18n="a11y.skipLink">Skip to content</a>
 
     <header class="navigation-bar-container">
-        <nav class="navigation-bar glass shadow" aria-label="Sezioni">
+        <nav class="navigation-bar glass shadow" aria-label="Sections" data-i18n-aria-label="nav.label">
             <ul class="navigation-bar__list">
                 <li class="navigation-bar__list__item">
-                    <a href="#who-am-i">Chi sono</a>
+                    <a href="#who-am-i" data-i18n="whoAmI.title">Who am I</a>
                 </li>
                 <li class="navigation-bar__list__item">
-                    <a href="#jobs">Esperienza lavorativa</a>
+                    <a href="#jobs" data-i18n="jobs.title">Work experience</a>
                 </li>
                 <li class="navigation-bar__list__item">
-                    <a href="#educations">Formazione</a>
+                    <a href="#educations" data-i18n="education.title">Education</a>
                 </li>
                 <li class="navigation-bar__list__item">
-                    <a href="#skills">Competenze</a>
+                    <a href="#skills" data-i18n="skills.title">Skills</a>
                 </li>
                 <li class="navigation-bar__list__item">
-                    <a href="#certifications">Certificazioni</a>
+                    <a href="#certifications" data-i18n="certifications.title">Certifications</a>
                 </li>
                 <li class="navigation-bar__list__item">
-                    <a href="#contribs">Contributi</a>
+                    <a href="#contribs" data-i18n="contribs.title">Contributions</a>
                 </li>
                 <li class="navigation-bar__list__item">
-                    <a href="#extra">Extra</a>
+                    <a href="#extra" data-i18n="extra.title">Extra</a>
                 </li>
             </ul>
-            <button class="theme-toggle" type="button" aria-label="Cambia tema" hidden>
+            <button class="nav-button language-toggle" type="button" hidden></button>
+            <button class="nav-button theme-toggle" type="button" hidden>
                 <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#moon"></use></svg>
             </button>
         </nav>
     </header>
 
     <main id="main">
-        <section class="hero" aria-label="Presentazione">
+        <section class="hero" aria-label="Introduction" data-i18n-aria-label="hero.label">
             <div class="hero__body">
                 <div class="hero__body__container">
                     <div class="hero__intro">
-                        <p class="hero__greeting">Ciao! Mi chiamo</p>
+                        <p class="hero__greeting" data-i18n="hero.greeting">Hi! My name is</p>
                         <h1 class="hero__name">Alessandro Tornesello</h1>
                         <p class="hero__role">
-                            Sono un
+                            <span data-i18n="hero.rolePrefix">I'm</span>
                             <span class="typewriter" aria-hidden="true" data-delay="80"
-                                data-words="Developer,Web Developer,Embedded Developer"></span>
-                            <span class="is-sr-only">Web Developer ed Embedded Developer</span>
+                                data-words="a Developer,a Web Developer,an Embedded Developer"
+                                data-i18n-data-words="hero.roleWords"></span>
+                            <span class="is-sr-only" data-i18n="hero.roleSr">a Web Developer and Embedded Developer</span>
                         </p>
                         <ul class="social-list">
                             <li>
@@ -124,13 +149,13 @@
                             </li>
                             <li>
                                 <a href="https://github.com/AleTornesello" target="_blank" rel="noopener"
-                                    aria-label="GitHub (si apre in una nuova scheda)">
+                                    aria-label="GitHub (opens in a new tab)" data-i18n-aria-label="social.github">
                                     <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#github"></use></svg>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.linkedin.com/in/alessandro-tornesello/" target="_blank"
-                                    rel="noopener" aria-label="LinkedIn (si apre in una nuova scheda)">
+                                <a href="https://www.linkedin.com/in/alessandro-tornesello/" target="_blank" rel="noopener"
+                                    aria-label="LinkedIn (opens in a new tab)" data-i18n-aria-label="social.linkedin">
                                     <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#linkedin"></use></svg>
                                 </a>
                             </li>
@@ -141,9 +166,10 @@
                             <picture>
                                 <source type="image/avif" srcset="assets/images/me-320.avif 320w, assets/images/me-640.avif 640w" sizes="(width < 1024px) min(20rem, 80vw), 20rem" />
                                 <source type="image/webp" srcset="assets/images/me-320.webp 320w, assets/images/me-640.webp 640w" sizes="(width < 1024px) min(20rem, 80vw), 20rem" />
-                                <img src="assets/images/me-640.jpg" width="640" height="640" alt="Foto di Alessandro Tornesello" fetchpriority="high" />
+                                <img src="assets/images/me-640.jpg" width="640" height="640" alt="Photo of Alessandro Tornesello"
+                                    data-i18n-alt="hero.photoAlt" fetchpriority="high" />
                             </picture>
-                            <ul class="other-images" aria-label="Tecnologie che uso">
+                            <ul class="other-images" aria-label="Technologies I use" data-i18n-aria-label="hero.technologies">
                                 <li class="other-image glass shadow">
                                     <img src="assets/images/js.svg" alt="JavaScript" />
                                 </li>
@@ -162,7 +188,7 @@
                 </div>
             </div>
             <div class="hero__scroll has-text-centered">
-                <a href="#who-am-i" aria-label="Vai a Chi sono">
+                <a href="#who-am-i" aria-label="Go to Who am I" data-i18n-aria-label="hero.scroll">
                     <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#chevron-down"></use></svg>
                 </a>
             </div>
@@ -171,7 +197,7 @@
         <section class="section" id="who-am-i" aria-labelledby="who-am-i-title">
             <div class="container">
                 <div class="section-title">
-                    <h2 id="who-am-i-title">Chi sono</h2>
+                    <h2 id="who-am-i-title" data-i18n="whoAmI.title">Who am I</h2>
                 </div>
                 <div class="window glass shadow">
                     <div class="window__top-bar" aria-hidden="true">
@@ -190,28 +216,25 @@
                         <svg class="svg-icon window__address-bar__mobile-action" aria-hidden="true"><use href="assets/icons.svg#ellipsis-vertical"></use></svg>
                     </div>
                     <div class="window__body">
-                        <p>
-                            Appassionato e competente sviluppatore software e un autodidatta
-                            instancabile che ha acquisito competenze approfondite in
-                            JavaScript, Vue, Nuxt, Angular, HTML5/CSS3 e Arduino.
+                        <p data-i18n="whoAmI.intro">
+                            Passionate and skilled software developer and a tireless self-learner who has built
+                            in-depth expertise in JavaScript, Vue, Nuxt, Angular, HTML5/CSS3 and Arduino.
                         </p>
-                        <p id="key-skills">Competenze chiave:</p>
+                        <p id="key-skills" data-i18n="whoAmI.keySkills">Key skills:</p>
                         <ul class="list mb-2" aria-labelledby="key-skills">
-                            <li>
-                                Linguaggi di programmazione: JavaScript, TypeScript, Python e Wiring
+                            <li data-i18n="whoAmI.skillLanguages">
+                                Programming languages: JavaScript, TypeScript, Python and Wiring
                             </li>
-                            <li>Framework: Vue 2+, Nuxt, Angular 8+</li>
-                            <li>Tecnologie web: HTML5, CSS3</li>
-                            <li>Sistemi embedded: Arduino</li>
-                            <li>Elettronica: progettazione e misurazione</li>
+                            <li data-i18n="whoAmI.skillFrameworks">Frameworks: Vue 2+, Nuxt, Angular 8+</li>
+                            <li data-i18n="whoAmI.skillWeb">Web technologies: HTML5, CSS3</li>
+                            <li data-i18n="whoAmI.skillEmbedded">Embedded systems: Arduino</li>
+                            <li data-i18n="whoAmI.skillElectronics">Electronics: design and measurement</li>
                         </ul>
-                        <p>
-                            Sono alla ricerca di opportunità che mi consentano di applicare la
-                            mia passione per lo sviluppo software e la progettazione embedded,
-                            contribuendo a progetti innovativi e sfidanti. La mia combinazione
-                            di competenze tecniche, creatività e capacità di problem-solving
-                            mi rende un professionista versatile e pronto ad affrontare nuove
-                            sfide.
+                        <p data-i18n="whoAmI.outro">
+                            I'm looking for opportunities to apply my passion for software development and
+                            embedded design, contributing to innovative and challenging projects. My mix of
+                            technical skills, creativity and problem-solving makes me a versatile professional,
+                            ready to take on new challenges.
                         </p>
                     </div>
                 </div>
@@ -221,21 +244,22 @@
         <section class="section" id="jobs" aria-labelledby="jobs-title">
             <div class="container">
                 <div class="section-title">
-                    <h2 id="jobs-title">Esperienza lavorativa</h2>
+                    <h2 id="jobs-title" data-i18n="jobs.title">Work experience</h2>
                 </div>
                 <ol class="section-body jobs-list timeline">
                     <li class="jobs-list__item timeline__item is-head">
                         <p class="period">
-                            <time datetime="2020-06">Giu. 2020</time> – Presente
+                            <time datetime="2020-06">Jun 2020</time> –
+                            <span data-i18n="jobs.present">Present</span>
                         </p>
                         <article class="description-container">
                             <h3 class="role">Frontend Web Developer</h3>
                             <p class="company">Mind the app Srl</p>
-                            <p class="description">
-                                Progettazione e sviluppo lato frontend di applicativi web in
-                                ambito gestionale e CMS in Angular 8+ e Vue 2+.
+                            <p class="description" data-i18n="jobs.mindTheApp.description">
+                                Frontend design and development of management software and CMS web applications
+                                in Angular 8+ and Vue 2+.
                             </p>
-                            <ul class="tag-list" aria-label="Tecnologie">
+                            <ul class="tag-list" aria-label="Technologies" data-i18n-aria-label="tags.technologies">
                                 <li class="tag">HTML5</li>
                                 <li class="tag">CSS3</li>
                                 <li class="tag">JavaScript</li>
@@ -249,17 +273,16 @@
                     </li>
                     <li class="jobs-list__item timeline__item">
                         <p class="period">
-                            <time datetime="2020-12">Dic. 2020</time> –
-                            <time datetime="2022-12">Dic. 2022</time>
+                            <time datetime="2020-12">Dec 2020</time> –
+                            <time datetime="2022-12">Dec 2022</time>
                         </p>
                         <article class="description-container">
-                            <h3 class="role">Membro</h3>
+                            <h3 class="role" data-i18n="jobs.r00tstici.role">Member</h3>
                             <p class="company">R00tstici</p>
-                            <p class="description">
-                                Formazione nell'ambito della cybersecurity in particolare
-                                nell'ambito della sicurezza delle applicazioni web.
+                            <p class="description" data-i18n="jobs.r00tstici.description">
+                                Cybersecurity training, focused on web application security.
                             </p>
-                            <ul class="tag-list" aria-label="Tecnologie">
+                            <ul class="tag-list" aria-label="Technologies" data-i18n-aria-label="tags.technologies">
                                 <li class="tag">Python</li>
                                 <li class="tag">Cybersecurity</li>
                             </ul>
@@ -267,18 +290,17 @@
                     </li>
                     <li class="jobs-list__item timeline__item">
                         <p class="period">
-                            <time datetime="2018-10">Ott. 2018</time> –
-                            <time datetime="2020-02">Feb. 2020</time>
+                            <time datetime="2018-10">Oct 2018</time> –
+                            <time datetime="2020-02">Feb 2020</time>
                         </p>
                         <article class="description-container">
                             <h3 class="role">Electronic and Control Division Member</h3>
                             <p class="company">Salento Racing Team</p>
-                            <p class="description">
-                                Progettazione di circuiti elettronici in ambito automotive.
-                                Progettazione e sviluppo di software per PLC (Arduino e STM32)
-                                in ambito automotive.
+                            <p class="description" data-i18n="jobs.salentoRacing.description">
+                                Design of electronic circuits for automotive applications. Design and development
+                                of PLC software (Arduino and STM32) for automotive applications.
                             </p>
-                            <ul class="tag-list" aria-label="Tecnologie">
+                            <ul class="tag-list" aria-label="Technologies" data-i18n-aria-label="tags.technologies">
                                 <li class="tag">Arduino</li>
                                 <li class="tag">STM32</li>
                                 <li class="tag">Wiring/C++</li>
@@ -287,19 +309,17 @@
                     </li>
                     <li class="jobs-list__item timeline__item">
                         <p class="period">
-                            <time datetime="2017-10">Ott. 2017</time>
+                            <time datetime="2017-10">Oct 2017</time>
                         </p>
                         <article class="description-container">
-                            <h3 class="role">
-                                Alternanza scuola-lavoro | Sviluppatore applicazioni mobile
-                                ibride
+                            <h3 class="role" data-i18n="jobs.links.role">
+                                School-work programme | Hybrid mobile app developer
                             </h3>
                             <p class="company">Links Management and Technology Spa</p>
-                            <p class="description">
-                                Progettazione, sviluppo e presentazione di un'applicazione
-                                mobile ibrida per il turismo.
+                            <p class="description" data-i18n="jobs.links.description">
+                                Design, development and presentation of a hybrid mobile app for tourism.
                             </p>
-                            <ul class="tag-list" aria-label="Tecnologie">
+                            <ul class="tag-list" aria-label="Technologies" data-i18n-aria-label="tags.technologies">
                                 <li class="tag">Ionic</li>
                                 <li class="tag">Angular.js</li>
                                 <li class="tag">Cordova</li>
@@ -313,26 +333,24 @@
         <section class="section" id="educations" aria-labelledby="educations-title">
             <div class="container">
                 <div class="section-title">
-                    <h2 id="educations-title">Formazione</h2>
+                    <h2 id="educations-title" data-i18n="education.title">Education</h2>
                 </div>
                 <ol class="section-body educations-list timeline">
                     <li class="educations-list__item timeline__item">
                         <p class="period">
-                            <time datetime="2013-09">Set. 2013</time> –
-                            <time datetime="2018-05">Mag. 2018</time>
+                            <time datetime="2013-09">Sep 2013</time> –
+                            <time datetime="2018-05">May 2018</time>
                         </p>
                         <article class="description-container">
-                            <h3 class="qualification">
-                                Diploma in Informatica e Telecomunicazioni, specializzazione
-                                Informatica
+                            <h3 class="qualification" data-i18n="education.meucci.qualification">
+                                Diploma in Computer Science and Telecommunications, Computer Science specialization
                             </h3>
                             <p class="school">
                                 Istituto d'Istruzione Superiore “Antonio Meucci”
                             </p>
-                            <p class="description">
-                                Progetto d'esame: progettazione, costruzione e programmazione di
-                                un robot, controllabile da remoto tramite un'applicazione mobile
-                                ibrida
+                            <p class="description" data-i18n="education.meucci.description">
+                                Final project: design, construction and programming of a robot, remotely
+                                controlled through a hybrid mobile app
                             </p>
                         </article>
                     </li>
@@ -343,7 +361,7 @@
         <section class="section" id="skills" aria-labelledby="skills-title">
             <div class="container">
                 <div class="section-title mb-4">
-                    <h2 id="skills-title">Competenze</h2>
+                    <h2 id="skills-title" data-i18n="skills.title">Skills</h2>
                 </div>
                 <div class="window glass shadow">
                     <div class="window__top-bar" aria-hidden="true">
@@ -383,7 +401,7 @@
                                 </ul>
                             </div>
                             <div class="skill-group">
-                                <h3 class="skill-group__title" id="skills-other">Linguaggi e dati</h3>
+                                <h3 class="skill-group__title" id="skills-other" data-i18n="skills.languagesAndData">Languages and data</h3>
                                 <ul class="tag-list" aria-labelledby="skills-other">
                                     <li class="tag">Python</li>
                                     <li class="tag">SQL Server</li>
@@ -398,7 +416,7 @@
         <section class="section" id="certifications" aria-labelledby="certifications-title">
             <div class="container">
                 <div class="section-title mb-4">
-                    <h2 id="certifications-title">Certificazioni</h2>
+                    <h2 id="certifications-title" data-i18n="certifications.title">Certifications</h2>
                 </div>
                 <div class="certifications-list fixed-grid has-1-cols-mobile has-2-cols-tablet has-3-cols-desktop">
                     <ul class="grid">
@@ -409,12 +427,12 @@
                                 </figure>
                             </div>
                             <article>
-                                <p class="period"><time datetime="2023-05">Mag. 2023</time></p>
+                                <p class="period"><time datetime="2023-05">May 2023</time></p>
                                 <h3 class="name is-size-5 has-text-weight-bold">
                                     Cloud Security Fundamentals
                                 </h3>
                                 <p class="certificator">Palo Alto Networks Cybersecurity Academy</p>
-                                <ul class="tag-list" aria-label="Argomenti">
+                                <ul class="tag-list" aria-label="Topics" data-i18n-aria-label="tags.topics">
                                     <li class="tag">Cloud security</li>
                                     <li class="tag">Virtualization</li>
                                     <li class="tag">Cloud computing</li>
@@ -428,12 +446,12 @@
                                 </figure>
                             </div>
                             <article>
-                                <p class="period"><time datetime="2022-12">Dic. 2022</time></p>
+                                <p class="period"><time datetime="2022-12">Dec 2022</time></p>
                                 <h3 class="name is-size-5 has-text-weight-bold">
                                     Network Security Fundamentals
                                 </h3>
                                 <p class="certificator">Palo Alto Networks Cybersecurity Academy</p>
-                                <ul class="tag-list" aria-label="Argomenti">
+                                <ul class="tag-list" aria-label="Topics" data-i18n-aria-label="tags.topics">
                                     <li class="tag">Network devices</li>
                                     <li class="tag">Network security</li>
                                     <li class="tag">Mobile security</li>
@@ -447,12 +465,12 @@
                                 </figure>
                             </div>
                             <article>
-                                <p class="period"><time datetime="2022-11">Nov. 2022</time></p>
+                                <p class="period"><time datetime="2022-11">Nov 2022</time></p>
                                 <h3 class="name is-size-5 has-text-weight-bold">
                                     Security Soft Start
                                 </h3>
                                 <p class="certificator">ONstairs</p>
-                                <ul class="tag-list" aria-label="Argomenti">
+                                <ul class="tag-list" aria-label="Topics" data-i18n-aria-label="tags.topics">
                                     <li class="tag">Network security</li>
                                     <li class="tag">Web application security</li>
                                     <li class="tag">Cryptography</li>
@@ -466,7 +484,7 @@
                                 </figure>
                             </div>
                             <article>
-                                <p class="period"><time datetime="2018-07">Lug. 2018</time></p>
+                                <p class="period"><time datetime="2018-07">Jul 2018</time></p>
                                 <h3 class="name is-size-5 has-text-weight-bold">
                                     Preliminary English Test
                                 </h3>
@@ -480,12 +498,12 @@
                                 </figure>
                             </div>
                             <article>
-                                <p class="period"><time datetime="2018-05">Mag. 2018</time></p>
+                                <p class="period"><time datetime="2018-05">May 2018</time></p>
                                 <h3 class="name is-size-5 has-text-weight-bold">
                                     CCNA Routing and Switching: Introduction to Networks
                                 </h3>
                                 <p class="certificator">Cisco Networking Academy</p>
-                                <ul class="tag-list" aria-label="Argomenti">
+                                <ul class="tag-list" aria-label="Topics" data-i18n-aria-label="tags.topics">
                                     <li class="tag">Network devices</li>
                                     <li class="tag">Network technologies</li>
                                     <li class="tag">Device configuration</li>
@@ -499,12 +517,12 @@
                                 </figure>
                             </div>
                             <article>
-                                <p class="period"><time datetime="2018-02">Feb. 2018</time></p>
-                                <h3 class="name is-size-5 has-text-weight-bold">
-                                    Introduzione a Internet of Everything
+                                <p class="period"><time datetime="2018-02">Feb 2018</time></p>
+                                <h3 class="name is-size-5 has-text-weight-bold" data-i18n="certifications.ioe">
+                                    Introduction to the Internet of Everything
                                 </h3>
                                 <p class="certificator">Cisco Networking Academy</p>
-                                <ul class="tag-list" aria-label="Argomenti">
+                                <ul class="tag-list" aria-label="Topics" data-i18n-aria-label="tags.topics">
                                     <li class="tag">IoT</li>
                                 </ul>
                             </article>
@@ -517,7 +535,7 @@
         <section class="section" id="contribs" aria-labelledby="contribs-title">
             <div class="container">
                 <div class="section-title mb-4">
-                    <h2 id="contribs-title">Contributi</h2>
+                    <h2 id="contribs-title" data-i18n="contribs.title">Contributions</h2>
                 </div>
                 <div class="contribs-list fixed-grid has-1-cols-mobile has-2-cols-tablet has-3-cols-desktop">
                     <ul class="grid">
@@ -529,10 +547,10 @@
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">Destructive Farm</h3>
-                                <p class="description">
-                                    Aggregatore di exploit per competizioni CTF di tipo attacco e difesa
+                                <p class="description" data-i18n="contribs.destructiveFarm">
+                                    Exploit aggregator for attack-defense CTF competitions
                                 </p>
-                                <ul class="commits" aria-label="Commit">
+                                <ul class="commits" aria-label="Commits" data-i18n-aria-label="contribs.commits">
                                     <li>
                                         <a class="commit"
                                             href="https://github.com/DestructiveVoice/DestructiveFarm/commit/aa0407192e61970950b28c586a599f6a535139a4">
@@ -551,10 +569,10 @@
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">PrimeNG</h3>
-                                <p class="description">
-                                    La più completa libreria di componenti UI per Angular
+                                <p class="description" data-i18n="contribs.primeng">
+                                    The most complete UI component library for Angular
                                 </p>
-                                <ul class="commits" aria-label="Commit">
+                                <ul class="commits" aria-label="Commits" data-i18n-aria-label="contribs.commits">
                                     <li>
                                         <a class="commit"
                                             href="https://github.com/primefaces/primeng/commit/330c9b9e80fd69185f6dcb06c4ffa94abdb351d3">
@@ -573,11 +591,11 @@
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">FakeTec PCB</h3>
-                                <p class="description">
-                                    Un dispositivo nRF52 a basso costo con la stessa forma dei dispositivi
-                                    Heltec v2 e v3, compatibile con Meshtastic.
+                                <p class="description" data-i18n="contribs.faketec">
+                                    A low-cost nRF52 device with the same form factor as Heltec v2 and v3 boards,
+                                    compatible with Meshtastic.
                                 </p>
-                                <ul class="commits" aria-label="Commit">
+                                <ul class="commits" aria-label="Commits" data-i18n-aria-label="contribs.commits">
                                     <li>
                                         <a class="commit"
                                             href="https://github.com/gargomoma/fakeTec_pcb/pull/66/changes/7264c6351f6862855cce03d4953df4f6214cb175">
@@ -596,7 +614,7 @@
         <section class="section" id="extra" aria-labelledby="extra-title">
             <div class="container">
                 <div class="section-title mb-4">
-                    <h2 id="extra-title">Extra</h2>
+                    <h2 id="extra-title" data-i18n="extra.title">Extra</h2>
                 </div>
                 <div class="extra-list fixed-grid has-1-cols-mobile has-2-cols-tablet has-3-cols-desktop">
                     <ul class="grid">
@@ -608,10 +626,9 @@
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">CyberChallenge.IT</h3>
-                                <p class="description">
-                                    Ho partecipato al programma di formazione, dove ho appreso le
-                                    basi della sicurezza informatica e delle competizioni Capture
-                                    The Flag
+                                <p class="description" data-i18n="extra.cyberchallenge">
+                                    I took part in the training programme, where I learned the basics of cybersecurity
+                                    and of Capture The Flag competitions
                                 </p>
                             </article>
                         </li>
@@ -623,9 +640,8 @@
                                     </figure>
                                 </div>
                                 <h3 class="name is-size-5 has-text-weight-bold">Hackathon</h3>
-                                <p class="description">
-                                    Ho avuto modo di partecipare a molteplici eventi e competizioni
-                                    informatiche
+                                <p class="description" data-i18n="extra.hackathon">
+                                    I have taken part in many hackathons and coding competitions
                                 </p>
                             </article>
                         </li>
@@ -638,7 +654,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p id="footer-contacts">
-                <strong>Contattami o seguimi su</strong>
+                <strong data-i18n="footer.contacts">Contact me or follow me on</strong>
             </p>
             <ul class="social-list" aria-labelledby="footer-contacts">
                 <li>
@@ -648,23 +664,22 @@
                 </li>
                 <li>
                     <a href="https://github.com/AleTornesello" target="_blank" rel="noopener"
-                        aria-label="GitHub (si apre in una nuova scheda)">
+                        aria-label="GitHub (opens in a new tab)" data-i18n-aria-label="social.github">
                         <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#github"></use></svg>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.linkedin.com/in/alessandro-tornesello/" target="_blank" rel="noopener"
-                        aria-label="LinkedIn (si apre in una nuova scheda)">
+                        aria-label="LinkedIn (opens in a new tab)" data-i18n-aria-label="social.linkedin">
                         <svg class="svg-icon" aria-hidden="true"><use href="assets/icons.svg#linkedin"></use></svg>
                     </a>
                 </li>
             </ul>
             <p class="mt-6">
-                Copyright &copy;
-                <span data-current-year>2026</span>
-                All rights reserved | This site is made with
-                <svg class="svg-icon has-text-danger" aria-label="amore" role="img"><use href="assets/icons.svg#heart"></use></svg> by Alessandro
-                Tornesello
+                Copyright &copy; <span data-current-year>2026</span>
+                <span data-i18n="footer.rights">All rights reserved | This site is made with</span>
+                <svg class="svg-icon has-text-danger" role="img" aria-label="love" data-i18n-aria-label="footer.love"><use href="assets/icons.svg#heart"></use></svg>
+                <span data-i18n="footer.by">by Alessandro Tornesello</span>
             </p>
         </div>
     </footer>

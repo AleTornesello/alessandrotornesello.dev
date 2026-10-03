@@ -39,6 +39,14 @@ pre {
   border-radius: 4px;
 }
 
+/*
+ * Set by the inline script in <head> while the English HTML is translated,
+ * so visitors don't see a flash of English (removed by js/modules/i18n.js).
+ */
+[data-i18n-pending] body {
+  visibility: hidden;
+}
+
 /* Keep anchor targets clear of the fixed navigation bar. */
 section[id] {
   scroll-margin-top: var(--nav-offset);

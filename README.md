@@ -32,7 +32,8 @@ public/                   # deploy this folder as the site root
 ├── fonts/                # Bricolage Grotesque (headings), SIL OFL
 ├── js/
 │   ├── main.js           # entry module: wires up the modules below
-│   └── modules/          # typewriter, scrollspy, theme toggle
+│   ├── modules/          # i18n, typewriter, scrollspy, theme toggle
+│   └── i18n/             # translations: it.js (and en.js for JS-only strings)
 └── assets/
     ├── icons.svg         # SVG icon sprite (Font Awesome Free, CC BY 4.0)
     ├── og-image.jpg      # link preview image, 1200x630
@@ -59,6 +60,29 @@ with the toggle in the navigation bar; the choice is saved in `localStorage`.
 Colors live in `tokens.css`; each section sets one `--accent` that its title
 underline, timeline and tags share. Use `--accent-ink` when the accent is used
 as text: it is adjusted per theme for contrast.
+
+### Languages
+
+The site is available in English and Italian. English is the source language
+and the fallback: it is written directly in the HTML, so crawlers, link
+previews and visitors without JavaScript get English.
+
+- **Detection:** an inline script in `<head>` picks the language before the
+  first paint: the visitor's saved choice, else the first supported language in
+  `navigator.languages`, else English. It sets `<html lang>`.
+- **Translation:** elements carry keys, `data-i18n="key"` for text (the element
+  must contain only text) and `data-i18n-<attribute>="key"` for attributes
+  (`aria-label`, `alt`, `content`, `data-words`). `js/modules/i18n.js` swaps in
+  the strings from `js/i18n/<lang>.js`; a missing key falls back to English.
+- **Dates:** `<time datetime="YYYY-MM">` elements are formatted per language
+  with `Intl.DateTimeFormat`, so they need no translation keys.
+- **Switching:** the IT/EN button in the navigation bar saves the choice in
+  `localStorage`, which then wins over the browser language.
+
+To change a text, edit it in `index.html` (English) and in `js/i18n/it.js`
+(Italian). To add a language, add `js/i18n/<lang>.js` with the same keys,
+register it in `js/modules/i18n.js`, and add it to the `supported` list in the
+inline scripts of `index.html` and `404.html`.
 
 ### Icons and images
 

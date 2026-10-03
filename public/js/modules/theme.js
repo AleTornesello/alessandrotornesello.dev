@@ -1,3 +1,5 @@
+import { t } from "./i18n.js";
+
 /*
  * Light/dark toggle. Without a saved choice the page follows the OS setting;
  * a click saves the opposite of the current theme. An inline script in
@@ -14,7 +16,7 @@ export function initThemeToggle(button) {
 
   const render = () => {
     const isDark = currentTheme() === "dark";
-    button.setAttribute("aria-label", isDark ? "Passa al tema chiaro" : "Passa al tema scuro");
+    button.setAttribute("aria-label", t(isDark ? "theme.toLight" : "theme.toDark"));
     // Swap the sprite symbol, keeping the sprite file path.
     const href = icon.getAttribute("href").replace(/#.*/, isDark ? "#sun" : "#moon");
     icon.setAttribute("href", href);
@@ -42,6 +44,7 @@ export function initThemeToggle(button) {
   });
 
   prefersDark.addEventListener("change", render);
+  document.addEventListener("i18n:change", render);
   button.hidden = false;
   render();
 }

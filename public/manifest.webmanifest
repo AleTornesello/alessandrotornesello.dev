@@ -1,0 +1,15 @@
+{
+  "name": "Alessandro Tornesello",
+  "short_name": "A. Tornesello",
+  "description": "Frontend Web Developer ed Embedded Developer",
+  "lang": "it",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#14161a",
+  "theme_color": "#14161a",
+  "icons": [
+    { "src": "assets/favicon/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "assets/favicon/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "assets/favicon/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

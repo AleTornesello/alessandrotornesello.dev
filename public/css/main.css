@@ -27,3 +27,4 @@
 @import url("sections/contribs.css") layer(sections);
 @import url("sections/extra.css") layer(sections);
 @import url("sections/footer.css") layer(sections);
+@import url("sections/not-found.css") layer(sections);

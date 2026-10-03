@@ -12,7 +12,7 @@ section .section-title {
   margin-top: 2rem;
   text-align: center;
 
-  h2 {
+  :is(h1, h2) {
     --line-y: 12px; /* distance of the 4px line from the bottom edge */
 
     width: fit-content;
@@ -51,8 +51,8 @@ section .section-title {
 
 /* The caps would overflow narrow screens. */
 @media screen and (width < 1024px) {
-  section .section-title h2::before,
-  section .section-title h2::after {
+  section .section-title :is(h1, h2)::before,
+  section .section-title :is(h1, h2)::after {
     display: none;
   }
 }

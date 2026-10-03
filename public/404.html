@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pagina non trovata | Alessandro Tornesello</title>
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Served at whatever URL was not found, so every path is root-relative. -->
+    <script>
+        try {
+            const theme = localStorage.getItem("theme");
+            if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+        } catch { }
+    </script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="icon" href="/assets/favicon/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml" />
+</head>
+
+<body>
+    <main>
+        <section class="section" id="not-found" aria-labelledby="not-found-title">
+            <div class="container">
+                <div class="section-title">
+                    <h1 id="not-found-title">Pagina non trovata</h1>
+                </div>
+                <p>L'indirizzo che hai aperto non esiste o è stato spostato.</p>
+                <a class="not-found__home" href="/">Torna alla home</a>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

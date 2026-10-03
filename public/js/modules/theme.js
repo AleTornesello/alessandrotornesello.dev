@@ -18,6 +18,15 @@ export function initThemeToggle(button) {
     // Swap the sprite symbol, keeping the sprite file path.
     const href = icon.getAttribute("href").replace(/#.*/, isDark ? "#sun" : "#moon");
     icon.setAttribute("href", href);
+
+    // The browser UI color (e.g. the mobile address bar) follows an explicit
+    // choice too; without one, the media-specific theme-color tags apply.
+    if (root.dataset.theme) {
+      const color = getComputedStyle(root).backgroundColor;
+      for (const meta of document.querySelectorAll('meta[name="theme-color"]')) {
+        meta.content = color;
+      }
+    }
   };
 
   button.addEventListener("click", () => {

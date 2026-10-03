@@ -4,45 +4,69 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light dark" />
     <title>Alessandro Tornesello | Web Developer</title>
-    <link rel="icon" href="assets/favicon/favicon.ico" sizes="any" />
-    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
-    <link rel="preload" href="./css/vendor/bulma.min.css" as="style" />
-    <link rel="preload" href="./fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="description"
+        content="Alessandro Tornesello, Frontend Web Developer ed Embedded Developer. Esperienza con Angular, Vue, Nuxt e Arduino, certificazioni e contributi open source." />
+    <link rel="canonical" href="https://alessandrotornesello.dev/" />
+
+    <!-- Theme: the inline script applies a saved choice before the first paint (see js/modules/theme.js). -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)" />
     <script>
-        // Apply the saved theme before the first paint (see js/modules/theme.js).
         try {
             const theme = localStorage.getItem("theme");
             if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
         } catch { }
     </script>
+
+    <link rel="preload" href="./css/vendor/bulma.min.css" as="style" />
+    <link rel="preload" href="./fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="./css/main.css" />
     <script type="module" src="./js/main.js"></script>
-    <meta name="title" content="Alessandro Tornesello | Web Developer" />
-    <meta name="description" content="Ciao! Mi chiamo Alessandro Tornesello. Sono un Web Developer." />
-    <meta name="keywords"
-        content="web, developer, embedded, cyberchallenge, ccit, cisco, coder, embedding, programmer" />
-    <meta name="robots" content="index, follow" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="language" content="Italian" />
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://alessandrotornesello.dev/" />
+    <link rel="icon" href="assets/favicon/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <!-- Link previews (Open Graph, also read by X/Twitter, LinkedIn, Slack, WhatsApp...) -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Alessandro Tornesello" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:url" content="https://alessandrotornesello.dev/" />
     <meta property="og:title" content="Alessandro Tornesello | Web Developer" />
-    <meta property="og:description" content="Ciao! Mi chiamo Alessandro Tornesello. Sono un Web Developer." />
-    <meta property="og:image" content="" />
-
-    <!-- Twitter Meta Tags -->
+    <meta property="og:description"
+        content="Frontend Web Developer ed Embedded Developer. Esperienza, competenze, certificazioni e contributi open source." />
+    <meta property="og:image" content="https://alessandrotornesello.dev/assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Alessandro Tornesello, Web &amp; Embedded Developer" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="aletornesello.github.io" />
-    <meta property="twitter:url" content="https://alessandrotornesello.dev/" />
-    <meta name="twitter:title" content="Alessandro Tornesello | Web Developer" />
-    <meta name="twitter:description" content="Ciao! Mi chiamo Alessandro Tornesello. Sono un Web Developer." />
-    <meta name="twitter:image" content="" />
 
-    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Alessandro Tornesello",
+            "url": "https://alessandrotornesello.dev/",
+            "image": "https://alessandrotornesello.dev/assets/images/me-640.jpg",
+            "jobTitle": "Frontend Web Developer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Mind the app Srl"
+            },
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Istituto d'Istruzione Superiore \"Antonio Meucci\""
+            },
+            "knowsAbout": ["Angular", "Vue.js", "Nuxt", "JavaScript", "TypeScript", "HTML", "CSS", "Arduino", "STM32", "Python", "Cybersecurity"],
+            "sameAs": [
+                "https://github.com/AleTornesello",
+                "https://www.linkedin.com/in/alessandro-tornesello/"
+            ]
+        }
+    </script>
 </head>
 
 <body>

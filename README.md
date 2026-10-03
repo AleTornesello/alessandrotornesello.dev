@@ -15,8 +15,12 @@ npx serve public
 ## Structure
 
 ```
-public/
+public/                   # deploy this folder as the site root
 ├── index.html
+├── 404.html              # served by the host for missing URLs (root-relative paths)
+├── robots.txt
+├── sitemap.xml           # update <lastmod> when the content changes
+├── manifest.webmanifest
 ├── css/
 │   ├── main.css          # entry point: declares cascade layers and imports everything
 │   ├── tokens.css        # design tokens: light/dark surfaces, section accents
@@ -31,8 +35,16 @@ public/
 │   └── modules/          # typewriter, scrollspy, theme toggle
 └── assets/
     ├── icons.svg         # SVG icon sprite (Font Awesome Free, CC BY 4.0)
+    ├── og-image.jpg      # link preview image, 1200x630
+    ├── favicon/
     └── images/
+tools/
+└── og-image.html         # template for og-image.jpg (not deployed)
 ```
+
+The canonical URL, link-preview tags, JSON-LD and sitemap all use
+`https://alessandrotornesello.dev/`, and `404.html` uses root-relative
+paths, so the site expects to be served from the root of that domain.
 
 ### Cascade layers
 
